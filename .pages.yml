@@ -26,42 +26,22 @@ content:
               - name: heading
                 label: Heading
                 type: string
-              - name: title
-                label: Title
-                type: string
-              - name: subtitle
-                label: Subtitle
-                type: text
-              - name: phone
-                label: Phone
-                type: string
-              - name: services
-                label: Services List
-                type: list
-                fields:
-                  - { name: label, type: string }
-              - name: description
+              - name: descruption
                 label: Description
-                type: text
+                type: string
               - name: buttons
                 label: Buttons
-                type: list
                 fields:
                   - { name: label, type: string }
                   - { name: url, type: string }
+                list: true
               - name: image
                 label: Image URL
-                type: string
-              - name: bgImage
-                label: Background Image URL
                 type: string
 
           - name: hero-with-quote
             label: Hero with Quote
             fields:
-              - name: heading
-                label: Heading
-                type: string
               - name: title
                 label: Title
                 type: string
@@ -73,21 +53,9 @@ content:
                 type: string
               - name: services
                 label: Services List
-                type: list
                 fields:
                   - { name: label, type: string }
-              - name: description
-                label: Description
-                type: text
-              - name: buttons
-                label: Buttons
-                type: list
-                fields:
-                  - { name: label, type: string }
-                  - { name: url, type: string }
-              - name: image
-                label: Image URL
-                type: string
+                list: true
               - name: bgImage
                 label: Background Image URL
                 type: string
