@@ -16,7 +16,7 @@ sections:
         url: "#"
       - label: About Us
         url: "#"
-    bgImage: /assets/images/filip-urban--ZG3DlZAjY8-unsplash.jpg
+    bgImage: /wall-paint-cans.jpg
   - type: about-us
     title: We'll help you design a space you'll love for years.
     description: We're committed to giving you a service you can count on, whether
