@@ -1,0 +1,33 @@
+---
+const { heading, services } = Astro.props;
+---
+
+<section class="">
+  <h2 class="text-3xl font-bold text-gray-800">{heading}</h2>
+  {
+    services.map(
+      (service: {
+        title: string;
+        description: string;
+        link: string;
+        image?: string;
+      }) => {
+        const { title, description, link, image } = service;
+        return (
+          <div class="overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
+            <div class="p-6">
+              <div class="mb-4 flex items-center">
+                {image && <img src={image} alt={title} class="mr-3 h-8 w-8" />}
+                <h3 class="mb-3 text-xl font-bold text-gray-800">{title}</h3>
+                <p class="text-gray-600">{description}</p>
+                <a href={link} class="mt-4 text-sm font-semibold text-blue-600">
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      }
+    )
+  }
+</section>
