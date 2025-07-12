@@ -51,11 +51,6 @@ content:
               - name: phone
                 label: Phone
                 type: string
-              - name: services
-                label: Services List
-                fields:
-                  - { name: label, type: string }
-                list: true
               - name: bgImage
                 label: Background Image URL
                 type: string
