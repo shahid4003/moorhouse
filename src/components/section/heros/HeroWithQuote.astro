@@ -11,11 +11,11 @@ const { title, subtitle, phone, services, bgImage } = Astro.props;
   <div class="absolute inset-0 bg-[#0f172a]/70 backdrop-blur-sm"></div>
 
   <div
-    class="md:flex md:items-center md:justify-between relative z-10 mx-auto w-full max-w-7xl px-4 py-16"
+    class="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 md:flex md:items-center md:justify-between"
   >
     <!-- Left Content -->
-    <div class="md:mb-0 mb-10 max-w-2xl text-white">
-      <h1 class="md:text-5xl mb-6 text-4xl font-bold leading-tight">
+    <div class="mb-10 max-w-2xl text-white md:mb-0">
+      <h1 class="mb-6 text-4xl font-bold leading-tight md:text-5xl">
         {title}
       </h1>
       <p class="mb-6 text-lg">
@@ -30,7 +30,7 @@ const { title, subtitle, phone, services, bgImage } = Astro.props;
         </a>
         <a
           href={`tel:${phone.replace(/[^0-9]/g, "")}`}
-          class="flex items-center gap-2 rounded-full bg-teal-500 px-6 py-3 font-semibold text-white transition hover:bg-teal-600"
+          class="ga flex items-center rounded-full bg-teal-500 px-6 py-3 font-semibold text-white transition hover:bg-teal-600"
         >
           <svg
             class="h-5 w-5"

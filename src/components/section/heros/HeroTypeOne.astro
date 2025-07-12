@@ -7,18 +7,18 @@ const { heading, description, buttons, image } = Astro.props;
 ---
 
 <section>
-  <div class="lg:grid-cols-2 lg:gap-20 container grid items-center gap-10">
+  <div class="0 lg:ga0 container grid items-center lg:grid-cols-2">
     <div
-      class="md:ml-auto lg:max-w-3xl lg:items-start lg:text-left mx-auto flex flex-col items-center text-center"
+      class="mx-auto flex flex-col items-center text-center md:ml-auto lg:max-w-3xl lg:items-start lg:text-left"
     >
-      <h1 class="lg:text-6xl xl:text-7xl my-6 text-pretty text-4xl font-bold">
+      <h1 class="my-6 text-pretty text-4xl font-bold lg:text-6xl xl:text-7xl">
         {heading}
       </h1>
-      <p class="text-muted-foreground lg:text-xl mb-8 max-w-xl">
+      <p class="text-muted-foreground mb-8 max-w-xl lg:text-xl">
         {description}
       </p>
       <div
-        class="lg:justify-start flex w-full flex-col justify-center gap-2 sm:flex-row"
+        class="ga flex w-full flex-col justify-center sm:flex-row lg:justify-start"
       >
         {
           buttons.primary && (
@@ -45,7 +45,7 @@ const { heading, description, buttons, image } = Astro.props;
         height={600}
         src={image}
         alt="placeholder hero"
-        className="lg:max-h-[800px] max-h-[600px] w-full rounded-md object-cover"
+        className="max-h-[600px] w-full rounded-md object-cover lg:max-h-[800px]"
       />
     </div>
   </div>

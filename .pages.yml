@@ -10,7 +10,9 @@ content:
     fields:
       - { name: title, label: Title, type: string }
       - { name: slug, label: Slug, type: string }
-      - { name: description, label: SEO Description, type: string }
+      - { name: seoTitle, label: SEO Title, type: string }
+      - { name: seoDescription, label: SEO Description, type: string }
+      - { name: published, label: Published, type: boolean, default: false }
       - name: sections
         label: Page Sections
         type: block
