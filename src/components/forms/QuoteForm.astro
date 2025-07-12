@@ -29,11 +29,12 @@ const { phone, services } = Astro.props;
   <select
     class="w-full rounded-md bg-white/10 px-4 py-2 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-teal-400"
   >
-    {
-      services.map((service: string) => (
-        <option value={service}>{service}</option>
-      ))
-    }
+    <option value="Residential Painting">Residential Painting</option>
+    <option value="Commercial Painting">Commercial Painting</option>
+    <option value="Interior Painting">Interior Painting</option>
+    <option value="Exterior Painting">Exterior Painting</option>
+    <option value="Cabinet Painting">Cabinet Painting</option>
+    <option value="Drywall Texturing">Drywall Texturing</option>
   </select>
 
   <div class="grid grid-cols-2 gap-4">

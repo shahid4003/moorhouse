@@ -2,10 +2,38 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 
+// Import your section components
+import HeroWithQuote from "@components/section/heros/HeroWithQuote.astro";
+import AboutUs from "@components/section/AboutUs.astro";
+import Services from "@components/section/Services.astro";
+import OurWorkProcess from "@components/section/OurWorkProcess.astro";
+import TestimonialTwoCol from "@components/section/Testimonials/TestimonialTwoCol.astro";
+// Add more imports as needed
+
 const pages = await getCollection("pages");
-console.log("Pages:", pages);
+const home = pages.find(p => p.data.slug === "home");
+const sections = home?.data.sections ?? [];
 ---
 
 <Layout>
-  <main id="main-content"></main>
+  <main id="main-content">
+    {
+      sections.map((data: any) => {
+        switch (data.type) {
+          case "hero-with-quote":
+            return <HeroWithQuote {...data} />;
+          case "about-us":
+            return <AboutUs {...data} />;
+          case "services":
+            return <Services {...data} />;
+          case "our-work-process":
+            return <OurWorkProcess {...data} />;
+          case "testimonial-twocol":
+            return <TestimonialTwoCol {...data} />;
+          default:
+            return null;
+        }
+      })
+    }
+  </main>
 </Layout>
