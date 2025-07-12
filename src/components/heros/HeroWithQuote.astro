@@ -1,0 +1,67 @@
+---
+import QuoteForm from "@components/forms/QuoteForm.astro";
+
+const {
+  title = "Quality painting services for lasting beauty and durability.",
+  subtitle = "We can give you that one-of-a-kind, personalized touch you've been searching for with our custom designs and special coatings. Let us help you transform your space into a sanctuary with our expert painting services.",
+  phone = "(123) 456 7890",
+  services = [
+    "Residential Painting",
+    "Commercial Painting",
+    "Interior",
+    "Exterior",
+  ],
+  bgImage,
+} = Astro.props;
+---
+
+<section
+  class="relative flex min-h-[90vh] items-center justify-center bg-cover bg-center bg-no-repeat"
+  style={`background-image: url('${bgImage}')`}
+>
+  <div class="absolute inset-0 bg-[#0f172a]/70 backdrop-blur-sm"></div>
+
+  <div
+    class="md:flex md:items-center md:justify-between relative z-10 mx-auto w-full max-w-7xl px-4 py-16"
+  >
+    <!-- Left Content -->
+    <div class="md:mb-0 mb-10 max-w-2xl text-white">
+      <h1 class="md:text-5xl mb-6 text-4xl font-bold leading-tight">
+        {title}
+      </h1>
+      <p class="mb-6 text-lg">
+        {subtitle}
+      </p>
+      <div class="flex gap-4">
+        <a
+          href="#services"
+          class="rounded-full bg-white px-6 py-3 font-semibold text-indigo-900 transition hover:bg-gray-100"
+        >
+          Our Services
+        </a>
+        <a
+          href={`tel:${phone.replace(/[^0-9]/g, "")}`}
+          class="flex items-center gap-2 rounded-full bg-teal-500 px-6 py-3 font-semibold text-white transition hover:bg-teal-600"
+        >
+          <svg
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 5h12M9 3v2m6 4h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2m-2 0H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"
+            ></path>
+          </svg>
+          {phone}
+        </a>
+      </div>
+    </div>
+
+    <!-- Quote Form -->
+    <QuoteForm phone={phone} services={services} />
+  </div>
+</section>

@@ -1,0 +1,20 @@
+---
+export interface Props {
+  href?: string;
+  variant?: "default" | "outline";
+  class?: string;
+  children: any;
+}
+const { href, variant = "default", class: className = "", children } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition-colors ${
+    variant === "outline"
+      ? "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100"
+      : "bg-black text-white hover:bg-gray-800"
+  } ${className}`}
+>
+  {children}
+</a>

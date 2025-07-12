@@ -1,0 +1,85 @@
+---
+const { phone, services } = Astro.props;
+---
+
+<form
+  class="w-full max-w-md space-y-4 rounded-lg bg-[#312e81] p-6 text-white shadow-xl"
+>
+  <h2 class="text-center text-xl font-semibold">Get a Free Quote</h2>
+  <p class="text-center text-sm">
+    Ready to bring your vision to life? Contact us today for a free quote and
+    let's get started!
+  </p>
+
+  <div class="grid grid-cols-2 gap-4">
+    <input
+      type="text"
+      placeholder="Name"
+      class="w-full rounded-md bg-white/10 px-4 py-2 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+      required
+    />
+    <input
+      type="tel"
+      placeholder="Phone"
+      class="w-full rounded-md bg-white/10 px-4 py-2 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+      required
+    />
+  </div>
+
+  <select
+    class="w-full rounded-md bg-white/10 px-4 py-2 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+  >
+    {
+      services.map((service: string) => (
+        <option value={service}>{service}</option>
+      ))
+    }
+  </select>
+
+  <div class="grid grid-cols-2 gap-4">
+    <input
+      type="date"
+      class="w-full rounded-md bg-white/10 px-4 py-2 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+    />
+    <input
+      type="text"
+      placeholder="ZIP Code"
+      class="w-full rounded-md bg-white/10 px-4 py-2 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="flex w-full items-center justify-center gap-2 rounded-md bg-teal-400 px-4 py-3 font-bold transition hover:bg-teal-500"
+  >
+    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        d="M2.003 5.884l8 4.8a1 1 0 001.494-.868V2.184a1 1 0 00-1.494-.868l-8 4.8a1 1 0 000 1.736z"
+      ></path>
+    </svg>
+    GET FREE QUOTE
+  </button>
+
+  <div class="mt-4 text-center">
+    <a
+      href={`tel:${phone.replace(/[^0-9]/g, "")}`}
+      class="flex items-center justify-center gap-2 text-teal-300 hover:text-white"
+    >
+      <svg
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3 5h12M9 3v2m6 4h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2m-2 0H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"
+        ></path>
+      </svg>
+      {phone}
+    </a>
+    <p class="text-sm">Consult with Expert</p>
+  </div>
+</form>

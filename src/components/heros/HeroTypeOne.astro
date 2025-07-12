@@ -1,0 +1,52 @@
+---
+import Button from "@components/ui/Button.astro";
+import CustomImage from "@components/ui/CustomImage.astro";
+import { ArrowDownRight } from "lucide-react";
+
+const { heading, description, buttons, image } = Astro.props;
+---
+
+<section>
+  <div class="lg:grid-cols-2 lg:gap-20 container grid items-center gap-10">
+    <div
+      class="md:ml-auto lg:max-w-3xl lg:items-start lg:text-left mx-auto flex flex-col items-center text-center"
+    >
+      <h1 class="lg:text-6xl xl:text-7xl my-6 text-pretty text-4xl font-bold">
+        {heading}
+      </h1>
+      <p class="text-muted-foreground lg:text-xl mb-8 max-w-xl">
+        {description}
+      </p>
+      <div
+        class="lg:justify-start flex w-full flex-col justify-center gap-2 sm:flex-row"
+      >
+        {
+          buttons.primary && (
+            <Button class="w-full sm:w-auto">
+              <a href={buttons.primary.url}>{buttons.primary.text}</a>
+            </Button>
+          )
+        }
+        {
+          buttons.secondary && (
+            <Button variant="outline">
+              <a href={buttons.secondary.url}>
+                {buttons.secondary.text}
+                <ArrowDownRight className="size-4" />
+              </a>
+            </Button>
+          )
+        }
+      </div>
+    </div>
+    <div class="flex">
+      <CustomImage
+        width={600}
+        height={600}
+        src={image}
+        alt="placeholder hero"
+        className="lg:max-h-[800px] max-h-[600px] w-full rounded-md object-cover"
+      />
+    </div>
+  </div>
+</section>
