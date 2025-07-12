@@ -2,29 +2,188 @@ media:
   input: public
   output: /
 content:
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/content/pages
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: slug, label: Slug, type: string }
+      - { name: description, label: SEO Description, type: string }
+      - name: sections
+        label: Page Sections
+        type: block
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{type} section ({index})"
+        blockKey: type
+        blocks:
+          - name: hero
+            label: Hero Section
+            fields:
+              - name: variant
+                label: Hero Type
+                type: select
+                options:
+                  values:
+                    - value: typeOne
+                      label: Hero Type One
+                    - value: typeTwo
+                      label: Hero Type Two
+
+              # Hero Type One
+              - name: heading
+                label: Heading
+                type: string
+                if: { variant: typeOne }
+              - name: description
+                label: Description
+                type: text
+                if: { variant: typeOne }
+              - name: buttons
+                label: Buttons
+                type: list
+                if: { variant: typeOne }
+                fields:
+                  - { name: label, type: string }
+                  - { name: url, type: string }
+              - name: image
+                label: Image URL
+                type: string
+                if: { variant: typeOne }
+
+              # Hero Type Two
+              - name: title
+                label: Title
+                type: string
+                if: { variant: typeTwo }
+              - name: subtitle
+                label: Subtitle
+                type: text
+                if: { variant: typeTwo }
+              - name: phone
+                label: Phone
+                type: string
+                if: { variant: typeTwo }
+              - name: services
+                label: Services List
+                type: list
+                if: { variant: typeTwo }
+                fields:
+                  - { name: label, type: string }
+              - name: bgImage
+                label: Background Image URL
+                type: string
+                if: { variant: typeTwo }
+
+          - name: text
+            label: Text Block
+            fields:
+              - { name: content, label: Content, type: rich-text }
+
+          - name: features
+            label: Features Section
+            fields:
+              - { name: title, label: Title, type: string }
+              - name: items
+                label: Feature Items
+                type: list
+                collapsible:
+                  collapsed: true
+                  summary: "{title} ({index})"
+                fields:
+                  - { name: icon, type: string }
+                  - { name: title, type: string }
+                  - { name: description, type: text }
+
+          - name: testimonials
+            label: Testimonial Section
+            fields:
+              - { name: title, type: string }
+              - name: testimonialsRef
+                label: Select Testimonials
+                type: reference
+                list: true
+
+          - name: cta
+            label: Call To Action
+            fields:
+              - { name: heading, type: string }
+              - { name: buttonText, type: string }
+              - { name: buttonLink, type: string }
+
+  - name: services
+    label: Services
+    type: collection
+    path: src/content/services
+    fields:
+      - { name: title, type: string }
+      - { name: slug, type: string }
+      - { name: icon, type: string }
+      - { name: description, type: text }
+      - { name: body, type: rich-text }
+      - { name: featured, type: boolean }
+
+  - name: testimonials
+    label: Testimonials
+    type: collection
+    path: src/content/testimonials
+    fields:
+      - { name: name, type: string }
+      - { name: title, type: string }
+      - { name: image, type: string }
+      - { name: rating, type: number }
+      - { name: testimonial, type: text }
+
   - name: posts
-    label: Posts
+    label: Blog Posts
     type: collection
     path: src/content/blog
-    view:
-      fields: [ title, draft, date ]
     fields:
       - { name: author, label: Author, type: string }
-      - { name: pubDatetime, label: Date, type: date }
-      - { name: modDatetime, label: Date, type: date }
+      - { name: pubDatetime, label: Published Date, type: date }
+      - { name: modDatetime, label: Last Modified, type: date }
       - { name: title, label: Title, type: string, required: true }
-      - { name: ogImage, label: Title, type: string }
+      - { name: ogImage, label: OG Image URL, type: string }
       - { name: slug, label: Slug, type: string }
       - { name: featured, label: Featured, type: boolean }
       - { name: draft, label: Draft, type: boolean }
-      - { name: tags, label: Tags, type: string, list: true }
+      - name: tags
+        label: Tags
+        list: true
+        fields:
+          - { name: tag, type: string }
       - { name: description, label: Description, type: string }
       - { name: body, label: Body, type: rich-text }
-  - name: about
-    label: About page
+
+  - name: header
+    label: Site Header
     type: file
-    path: src/pages/about.md
+    path: src/content/globals/header.md
     fields:
-      - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
-      - { name: title, label: Title, type: string }
-      - { name: body, label: Body, type: rich-text, options: { input: public/assets, output: /assets } }
+      - name: navLinks
+        label: Navigation
+        list: true
+        fields:
+          - { name: label, type: string }
+          - { name: url, type: string }
+
+  - name: footer
+    label: Site Footer
+    type: file
+    path: src/content/globals/footer.md
+    fields:
+      - { name: copyright, type: string }
+      - name: links
+        label: Footer Links
+        list: true
+        fields:
+          - { name: label, type: string }
+          - { name: url, type: string }
+      - name: socials
+        label: Social Media
+        list: true
+        fields:
+          - { name: platform, type: string }
+          - { name: url, type: string }
