@@ -1,18 +1,7 @@
 ---
 import QuoteForm from "@components/forms/QuoteForm.astro";
 
-const {
-  title = "Quality painting services for lasting beauty and durability.",
-  subtitle = "We can give you that one-of-a-kind, personalized touch you've been searching for with our custom designs and special coatings. Let us help you transform your space into a sanctuary with our expert painting services.",
-  phone = "(123) 456 7890",
-  services = [
-    "Residential Painting",
-    "Commercial Painting",
-    "Interior",
-    "Exterior",
-  ],
-  bgImage,
-} = Astro.props;
+const { title, subtitle, phone, services, bgImage } = Astro.props;
 ---
 
 <section

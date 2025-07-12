@@ -19,99 +19,78 @@ content:
             summary: "{type} section ({index})"
         blockKey: type
         blocks:
-          - name: hero
-            label: Hero Section
+          - name: hero-two-columns
+            label: Hero Two Columns
             fields:
-              - name: variant
-                label: Hero Type
-                type: select
-                options:
-                  values:
-                    - value: typeOne
-                      label: Hero Type One
-                    - value: typeTwo
-                      label: Hero Type Two
-
-              # Hero Type One
               - name: heading
                 label: Heading
                 type: string
-                if: { variant: typeOne }
+              - name: title
+                label: Title
+                type: string
+              - name: subtitle
+                label: Subtitle
+                type: text
+              - name: phone
+                label: Phone
+                type: string
+              - name: services
+                label: Services List
+                type: list
+                fields:
+                  - { name: label, type: string }
               - name: description
                 label: Description
                 type: text
-                if: { variant: typeOne }
               - name: buttons
                 label: Buttons
                 type: list
-                if: { variant: typeOne }
                 fields:
                   - { name: label, type: string }
                   - { name: url, type: string }
               - name: image
                 label: Image URL
                 type: string
-                if: { variant: typeOne }
-
-              # Hero Type Two
-              - name: title
-                label: Title
-                type: string
-                if: { variant: typeTwo }
-              - name: subtitle
-                label: Subtitle
-                type: text
-                if: { variant: typeTwo }
-              - name: phone
-                label: Phone
-                type: string
-                if: { variant: typeTwo }
-              - name: services
-                label: Services List
-                type: list
-                if: { variant: typeTwo }
-                fields:
-                  - { name: label, type: string }
               - name: bgImage
                 label: Background Image URL
                 type: string
-                if: { variant: typeTwo }
 
-          - name: text
-            label: Text Block
+          - name: hero-with-quote
+            label: Hero with Quote
             fields:
-              - { name: content, label: Content, type: rich-text }
-
-          - name: features
-            label: Features Section
-            fields:
-              - { name: title, label: Title, type: string }
-              - name: items
-                label: Feature Items
+              - name: heading
+                label: Heading
+                type: string
+              - name: title
+                label: Title
+                type: string
+              - name: subtitle
+                label: Subtitle
+                type: text
+              - name: phone
+                label: Phone
+                type: string
+              - name: services
+                label: Services List
                 type: list
-                collapsible:
-                  collapsed: true
-                  summary: "{title} ({index})"
                 fields:
-                  - { name: icon, type: string }
-                  - { name: title, type: string }
-                  - { name: description, type: text }
+                  - { name: label, type: string }
+              - name: description
+                label: Description
+                type: text
+              - name: buttons
+                label: Buttons
+                type: list
+                fields:
+                  - { name: label, type: string }
+                  - { name: url, type: string }
+              - name: image
+                label: Image URL
+                type: string
+              - name: bgImage
+                label: Background Image URL
+                type: string
 
-          - name: testimonials
-            label: Testimonial Section
-            fields:
-              - { name: title, type: string }
-              - name: testimonialsRef
-                label: Select Testimonials
-                type: reference
-                list: true
-
-          - name: cta
-            label: Call To Action
-            fields:
-              - { name: heading, type: string }
-              - { name: buttonText, type: string }
-              - { name: buttonLink, type: string }
 
   - name: services
     label: Services
