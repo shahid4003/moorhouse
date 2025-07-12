@@ -16,11 +16,11 @@ const { title, description, features, image } = Astro.props;
 ---
 
 <section class="bg-white py-20">
-  <div class="2 mx-auto grid max-w-7xl items-center px-6 md:grid-cols-2">
+  <div class="2 mx-auto grid max-w-7xl items-center gap-8 px-6 md:grid-cols-2">
     <!-- Left -->
     <div>
-      <h2 class="mb-4 text-4xl font-semibold text-indigo-900">{title}</h2>
-      <p class="mb-10 text-gray-700">{description}</p>
+      <h2 class="text-primary mb-4 text-4xl font-semibold">{title}</h2>
+      <p class="mb-10">{description}</p>
 
       <div class="grid gap-6 rounded-xl bg-indigo-50 p-6 sm:grid-cols-2">
         {
@@ -40,8 +40,12 @@ const { title, description, features, image } = Astro.props;
     </div>
 
     <!-- Right -->
-    <div class="w-full">
-      <img src={image} alt={""} class="rounded-xl shadow-md" />
+    <div class="h-full w-full">
+      <img
+        src={image}
+        alt={""}
+        class="h-full rounded-xl object-cover shadow-md"
+      />
     </div>
   </div>
 </section>

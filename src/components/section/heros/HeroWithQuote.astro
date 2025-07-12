@@ -1,14 +1,15 @@
 ---
 import QuoteForm from "@components/forms/QuoteForm.astro";
 
-const { title, subtitle, phone, services, bgImage } = Astro.props;
+const { title, subtitle, phone, services, bgImage, buttons } = Astro.props;
+console.log("HeroWithQuote Props:", { buttons });
 ---
 
 <section
   class="relative flex min-h-[70vh] items-center justify-center bg-cover bg-center bg-no-repeat"
   style={`background-image: url('${bgImage}')`}
 >
-  <div class="absolute inset-0 bg-[#0f172a]/70 backdrop-blur-sm"></div>
+  <div class="absolute inset-0 bg-[#1D1B37]/70"></div>
 
   <div
     class="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 md:flex md:items-center md:justify-between"
@@ -21,32 +22,21 @@ const { title, subtitle, phone, services, bgImage } = Astro.props;
       <p class="mb-6 text-lg">
         {subtitle}
       </p>
-      <div class="flex gap-4">
-        <a
-          href="#services"
-          class="rounded-full bg-white px-6 py-3 font-semibold text-indigo-900 transition hover:bg-gray-100"
-        >
-          Our Services
-        </a>
-        <a
-          href={`tel:${phone.replace(/[^0-9]/g, "")}`}
-          class="ga flex items-center rounded-full bg-teal-500 px-6 py-3 font-semibold text-white transition hover:bg-teal-600"
-        >
-          <svg
-            class="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3 5h12M9 3v2m6 4h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2m-2 0H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"
-            ></path>
-          </svg>
-          {phone}
-        </a>
+      <div class="flex flex-wrap gap-4">
+        {
+          buttons &&
+            buttons.length > 0 &&
+            buttons.map((btn, idx) => (
+              <a
+                href={btn.url}
+                class={`rounded-md px-6 py-3 font-semibold transition hover:bg-gray-100 ${
+                  idx === 0 ? "bg-secondary text-black" : "bg-white text-black"
+                }`}
+              >
+                {btn.label}
+              </a>
+            ))
+        }
       </div>
     </div>
 
