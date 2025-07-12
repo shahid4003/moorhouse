@@ -37,7 +37,7 @@ content:
                 list: true
               - name: image
                 label: Image URL
-                type: string
+                type: image
 
           - name: hero-with-quote
             label: Hero with Quote
@@ -51,9 +51,15 @@ content:
               - name: phone
                 label: Phone
                 type: string
+              - name: buttons
+                label: Buttons
+                fields:
+                  - { name: label, type: string }
+                  - { name: url, type: string }
+                list: true
               - name: bgImage
                 label: Background Image URL
-                type: string
+                type: image
 
 
   - name: services
