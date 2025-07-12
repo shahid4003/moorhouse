@@ -9,7 +9,7 @@ content:
     path: src/content/pages
     fields:
       - { name: title, label: Title, type: string }
-      - { name: slug, label: Slug, type: slugify }
+      - { name: slug, label: Slug, type: string }
       - { name: description, label: SEO Description, type: string }
       - name: sections
         label: Page Sections
