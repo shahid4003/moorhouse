@@ -19,7 +19,8 @@ sections:
     bgImage: /wall-paint-cans.jpg
   - type: about-us
     title: We'll help you design a space you'll love for years.
-    description: We're committed to giving you a service you can count on, whether
+    description:
+      We're committed to giving you a service you can count on, whether
       you just want to update one room or do a big renovation. We believe that
       dependability is the key to any project's success, and we want to earn
       your trust and business by giving you reliable and excellent service.
@@ -28,7 +29,8 @@ sections:
         text: We only use the best paints and materials, so your walls and other
           surfaces will look great and last for a long time.
       - title: Color Consultation
-        text: Our team can help you pick home colors and finishes. To ensure your
+        text:
+          Our team can help you pick home colors and finishes. To ensure your
           satisfaction, we offer professional advice and suggestions.
       - title: Attention to Detail
         text: For a perfect finish, our team pays close attention to details. We
@@ -40,7 +42,8 @@ sections:
     image: /assets/images/couple-painting-house-shape-on-wall-in-new-apartment.jpg
   - type: services
     heading: Our Services
-    description: Whether you're looking to refresh your space or create a new look,
+    description:
+      Whether you're looking to refresh your space or create a new look,
       our team can help with a range of painting services.
   - type: our-work-process
     heading: Our Work Process
