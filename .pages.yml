@@ -63,7 +63,6 @@ content:
               - { name: description, label: Description, type: string }
               - { name: image, label: Image URL, type: image }
 
-
           - name: testimonial-slider
             label: Testimonial Slider
             fields:
@@ -101,6 +100,16 @@ content:
             fields:
               - { name: heading, label: Heading, type: string }
               - { name: description, label: Description, type: string }
+              - name: services_list
+                label: Service Items
+                type: list
+                fields:
+                  - name: service
+                    label: Service Reference
+                    type: reference
+                    options:
+                      collection: services
+
           - name: cta-banner
             label: Call to Action Banner
             fields:
@@ -110,3 +119,74 @@ content:
               - { name: buttonUrl, label: Button URL, type: string }
               - { name: bgColor, label: Background Color, type: color }
               - { name: textColor, label: Text Color, type: color }
+
+  - name: services
+    label: Services
+    type: collection
+    path: src/content/services
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: slug, label: Slug, type: string }
+      - { name: featuredImage, label: Featured Image, type: image }
+      - name: sections
+        label: Service Page Sections
+        type: block
+        list:
+          blockKey: type
+          blocks:
+            # reuse same blocks as in `pages`:
+            - name: hero-two-columns
+              label: Hero Two Columns
+              fields:
+                - { name: heading, label: Heading, type: string }
+                - { name: descruption, label: Description, type: string }
+                - name: buttons
+                  label: Buttons
+                  fields:
+                    - { name: label, type: string }
+                    - { name: url, type: string }
+                  list: true
+                - { name: image, label: Image URL, type: image }
+
+            - name: single-hero
+              label: Single Hero
+              fields:
+                - { name: title, label: Title, type: string }
+                - { name: description, label: Description, type: string }
+                - { name: bgImage, label: Background Image URL, type: image }
+
+            - name: about-us
+              label: About Us
+              fields:
+                - { name: title, label: Title, type: string }
+                - { name: description, label: Description, type: string }
+                - name: features
+                  label: Features
+                  list: true
+                  fields:
+                    - { name: icon, type: image }
+                    - { name: title, type: string }
+                    - { name: text, type: string }
+                - { name: image, label: Image URL, type: image }
+
+            - name: our-work-process
+              label: Our Work Process
+              fields:
+                - { name: heading, label: Heading, type: string }
+                - { name: description, label: Description, type: string }
+                - name: cards
+                  label: Cards
+                  list: true
+                  fields:
+                    - { name: icon, type: image }
+                    - { name: title, type: string }
+
+  - name: testimonials
+    label: Testimonials
+    type: collection
+    path: src/content/testimonials
+    fields:
+      - { name: name, label: Name, type: string }
+      - { name: role, label: Role, type: string }
+      - { name: quote, label: Quote, type: text }
+      - { name: image, label: Profile Image, type: image }
