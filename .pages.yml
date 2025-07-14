@@ -6,7 +6,7 @@ content:
   - name: pages
     label: Pages
     type: collection
-    path: src/content/pages
+    path: src/data/pages
     fields:
       - { name: title, label: Title, type: string }
       - { name: slug, label: Slug, type: string }
@@ -102,7 +102,7 @@ content:
               - { name: description, label: Description, type: string }
               - name: services_list
                 label: Service Items
-                type: list
+                list: true
                 fields:
                   - name: service
                     label: Service Reference
@@ -123,18 +123,20 @@ content:
   - name: services
     label: Services
     type: collection
-    path: src/content/services
+    path: src/data/services
     fields:
-      - { name: title, label: Title, type: string }
-      - { name: slug, label: Slug, type: string }
-      - { name: featuredImage, label: Featured Image, type: image }
-      - name: sections
-        label: Service Page Sections
-        type: block
-        list:
+        - { name: title, label: Title, type: string }
+        - { name: slug, label: Slug, type: string }
+        - { name: featuredImage, label: Featured Image, type: image }
+        - name: sections
+          label: Service Page Sections
+          type: block
+          list:
+            collapsible:
+              collapsed: true
+              summary: "{type} section ({index})"
           blockKey: type
           blocks:
-            # reuse same blocks as in `pages`:
             - name: hero-two-columns
               label: Hero Two Columns
               fields:
@@ -147,14 +149,41 @@ content:
                     - { name: url, type: string }
                   list: true
                 - { name: image, label: Image URL, type: image }
-
+    
+            - name: hero-with-quote
+              label: Hero with Quote
+              fields:
+                - { name: title, label: Title, type: string }
+                - { name: subtitle, label: Subtitle, type: text }
+                - { name: phone, label: Phone, type: string }
+                - name: buttons
+                  label: Buttons
+                  fields:
+                    - { name: label, type: string }
+                    - { name: url, type: string }
+                  list: true
+                - { name: bgImage, label: Background Image URL, type: image }
+    
             - name: single-hero
               label: Single Hero
               fields:
                 - { name: title, label: Title, type: string }
                 - { name: description, label: Description, type: string }
                 - { name: bgImage, label: Background Image URL, type: image }
-
+    
+            - name: testimonial-twocol
+              label: Testimonial Two Column
+              fields:
+                - { name: heading, label: Heading, type: string }
+                - { name: description, label: Description, type: string }
+                - { name: image, label: Image URL, type: image }
+    
+            - name: testimonial-slider
+              label: Testimonial Slider
+              fields:
+                - { name: heading, label: Heading, type: string }
+                - { name: subheading, label: Subheading, type: string }
+    
             - name: about-us
               label: About Us
               fields:
@@ -168,7 +197,7 @@ content:
                     - { name: title, type: string }
                     - { name: text, type: string }
                 - { name: image, label: Image URL, type: image }
-
+    
             - name: our-work-process
               label: Our Work Process
               fields:
@@ -180,11 +209,36 @@ content:
                   fields:
                     - { name: icon, type: image }
                     - { name: title, type: string }
-
+    
+            - name: services
+              label: Services
+              fields:
+                - { name: heading, label: Heading, type: string }
+                - { name: description, label: Description, type: string }
+                - name: services_list
+                  label: Service Items
+                  type: list
+                  fields:
+                    - name: service
+                      label: Service Reference
+                      type: reference
+                      options:
+                        collection: services
+    
+            - name: cta-banner
+              label: Call to Action Banner
+              fields:
+                - { name: title, label: Title, type: string }
+                - { name: description, label: Description, type: string }
+                - { name: buttonText, label: Button Text, type: string }
+                - { name: buttonUrl, label: Button URL, type: string }
+                - { name: bgColor, label: Background Color, type: color }
+                - { name: textColor, label: Text Color, type: color }
+     
   - name: testimonials
     label: Testimonials
     type: collection
-    path: src/content/testimonials
+    path: src/data/testimonials
     fields:
       - { name: name, label: Name, type: string }
       - { name: role, label: Role, type: string }
