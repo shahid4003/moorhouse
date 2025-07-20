@@ -117,8 +117,6 @@ content:
               - { name: description, label: Description, type: string }
               - { name: buttonText, label: Button Text, type: string }
               - { name: buttonUrl, label: Button URL, type: string }
-              - { name: bgColor, label: Background Color, type: color }
-              - { name: textColor, label: Text Color, type: color }
 
   - name: services
     label: Services
@@ -128,6 +126,7 @@ content:
         - { name: title, label: Title, type: string }
         - { name: slug, label: Slug, type: string }
         - { name: featuredImage, label: Featured Image, type: image }
+        - { name: shortDescription, label: Short Description, type: string }
         - name: sections
           label: Service Page Sections
           type: block
