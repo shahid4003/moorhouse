@@ -7,6 +7,7 @@ content:
     label: Pages
     type: collection
     path: src/data/pages
+    filename: "{primary}.md"
     fields:
       - { name: title, label: Title, type: string }
       - { name: slug, label: Slug, type: string }
@@ -122,6 +123,7 @@ content:
     label: Services
     type: collection
     path: src/data/services
+    filename: "{primary}.md"
     fields:
         - { name: title, label: Title, type: string }
         - { name: slug, label: Slug, type: string }
@@ -237,6 +239,7 @@ content:
   - name: testimonials
     label: Testimonials
     type: collection
+    filename: "{primary}.md"
     path: src/data/testimonials
     fields:
       - { name: name, label: Name, type: string }
