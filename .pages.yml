@@ -217,7 +217,7 @@ content:
                 - { name: description, label: Description, type: string }
                 - name: services_list
                   label: Service Items
-                  type: list
+                  list: true
                   fields:
                     - name: service
                       label: Service Reference
