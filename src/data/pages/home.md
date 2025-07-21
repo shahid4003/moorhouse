@@ -42,6 +42,11 @@ sections:
     heading: Our Services
     description: Whether you're looking to refresh your space or create a new look,
       our team can help with a range of painting services.
+    services_list:
+      - service: src/data/services/residential-painting.md
+      - service: src/data/services/commercial-painting.md
+      - service: src/data/services/interior-painting.md
+      - service: src/data/services/exterior-painting.md
   - type: our-work-process
     heading: Our Work Process
     description: Our work process is designed to provide you with a stress-free
