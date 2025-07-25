@@ -33,7 +33,18 @@ const services = defineCollection({
 const testimonials = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "src/data/testimonials" }),
 });
-const singletons = defineCollection({
-  loader: glob({ pattern: "**/*.yml", base: "src/data/singletons" }),
+const header = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/data/header" }),
 });
-export const collections = { blog, pages, services, testimonials, singletons };
+
+const footer = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/data/footer" }),
+});
+export const collections = {
+  blog,
+  pages,
+  services,
+  testimonials,
+  header,
+  footer,
+};
