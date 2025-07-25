@@ -56,10 +56,14 @@ sections:
     description: Our work process is designed to provide you with a stress-free
       painting experience, from start to finish.
     cards:
-      - title: Preparation
-      - title: Painting
-      - title: Inspection
-      - title: Cleanup
+      - icon: /swatchbook-svgrepo-com.svg
+        title: Preparation
+      - icon: /spray-can-svgrepo-com.svg
+        title: Painting
+      - icon: /tools-svgrepo-com.svg
+        title: Inspection
+      - icon: /hands-wash-svgrepo-com.svg
+        title: Cleanup
   - type: testimonial-twocol
     heading: Customer Testimonials
     description: From small repairs to large commercial projects, our skills and
