@@ -68,4 +68,10 @@ sections:
     heading: Customer Testimonials
     description: From small repairs to large commercial projects, our skills and
       customer service exceed expectations. Discover why our customers love us!
+  - type: cta-banner
+    title: Get Your Space Ready for a Fresh Start!
+    description: From bold colors to unique finishes, we can help you achieve the
+      look you want. Contact us for your project.
+    buttonText: Contact Us
+    buttonUrl: /contact
 ---
