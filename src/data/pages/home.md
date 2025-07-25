@@ -68,6 +68,7 @@ sections:
     heading: Customer Testimonials
     description: From small repairs to large commercial projects, our skills and
       customer service exceed expectations. Discover why our customers love us!
+    image: /painting-the-walls-768x512.jpg
   - type: cta-banner
     title: Get Your Space Ready for a Fresh Start!
     description: From bold colors to unique finishes, we can help you achieve the
