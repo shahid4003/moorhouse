@@ -2,13 +2,13 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 
-// Import your section components
 import HeroWithQuote from "@components/section/heros/HeroWithQuote.astro";
 import AboutUs from "@components/section/AboutUs.astro";
 import Services from "@components/section/Services.astro";
 import OurWorkProcess from "@components/section/OurWorkProcess.astro";
 import TestimonialTwoCol from "@components/section/Testimonials/TestimonialTwoCol.astro";
-// Add more imports as needed
+import CtaBanner from "@components/section/CtaBanner.astro";
+import CtaBannerWithBG from "@components/section/CtaBannerWithBG.astro";
 
 const pages = await getCollection("pages");
 const home = pages.find(p => p.data.slug === "home");
@@ -30,6 +30,10 @@ const sections = home?.data.sections ?? [];
             return <OurWorkProcess {...data} />;
           case "testimonial-twocol":
             return <TestimonialTwoCol {...data} />;
+          case "cta-banner":
+            return <CtaBanner {...data} />;
+          case "cta-banner-with-bg":
+            return <CtaBannerWithBG {...data} />;
           default:
             return null;
         }

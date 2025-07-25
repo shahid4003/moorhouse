@@ -116,15 +116,23 @@ content:
             fields:
               - { name: title, label: Title, type: string }
               - { name: description, label: Description, type: string }
-              - { name: buttonText, label: Button Text, type: string }
-              - { name: buttonUrl, label: Button URL, type: string }
+              - name: button
+                label: Button
+                type: object
+                fields:
+                  - { name: label, label: Button Text, type: string }
+                  - { name: link, label: Button URL, type: string }
           - name: cta-banner-with-bg
             label: Call to Action With BackgroundImage
             fields:
               - { name: title, label: Title, type: string }
               - { name: description, label: Description, type: string }
-              - { name: buttonText, label: Button Text, type: string }
-              - { name: buttonUrl, label: Button URL, type: string }
+              - name: button
+                label: Button
+                type: object
+                fields:
+                  - { name: label, label: Button Text, type: string }
+                  - { name: link, label: Button URL, type: string }
               - { name: icon, label: Background Image, type: image }
 
   - name: services
@@ -242,7 +250,6 @@ content:
                 - { name: buttonText, label: Button Text, type: string }
                 - { name: buttonUrl, label: Button URL, type: string }
                 - { name: bgColor, label: Background Color, type: color }
-                - { name: textColor, label: Text Color, type: color }
      
   - name: testimonials
     label: Testimonials
@@ -254,3 +261,84 @@ content:
       - { name: role, label: Role, type: string }
       - { name: quote, label: Quote, type: text }
       - { name: image, label: Profile Image, type: image }
+      - { name: rating, label: Rating, type: number, }
+   
+  - name: Header
+    label: Header
+    type: file
+    path: src/data/header/header.md
+    fields:
+      - name: logo
+        label: Logo
+        type: image
+      - name: navLinks
+        label: Navigation Links
+        list: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: href
+            label: URL
+            type: string
+          - name: sublinks
+            label: Submenu Links
+            list: true
+            fields:
+              - name: label
+                label: Label
+                type: string
+              - name: href
+                label: URL
+                type: string
+      - name: actions
+        label: Action Buttons
+        list: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: href
+            label: URL
+            type: string
+  - name: Footer
+    label: Footer
+    type: file
+    path: src/data/footer/footer.md
+    fields:
+      - name: logo
+        label: Logo
+        type: image
+      - name: description
+        label: Description
+        type: string
+      - name: sections
+        label: Footer Sections
+        list: true
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: links
+            label: Links
+            list: true
+            fields:
+              - name: text
+                label: Text
+                type: string
+              - name: href
+                label: URL
+                type: string
+      - name: contact
+        label: Contact Information
+        type: object
+        fields:
+          - name: email
+            label: Email Address
+            type: string
+          - name: phone
+            label: Phone Number
+            type: string
+          - name: address
+            label: Physical Address (optional)
+            type: string

@@ -26,9 +26,12 @@ const { title, description, features, image } = Astro.props;
         {
           features.map(feature => (
             <div class="flex items-start gap-4">
-              <div class="rounded-full bg-indigo-500  text-white">
-                <img src={feature.icon} alt={feature.title} class="h-5 w-5" />
-              </div>
+              <img
+                src={feature.icon}
+                alt={feature.title}
+                class="bg-primary h-10 w-10 rounded-full object-contain p-2"
+              />
+
               <div>
                 <h4 class="font-medium text-indigo-900">{feature.title}</h4>
                 <p class="text-sm text-gray-600">{feature.text}</p>

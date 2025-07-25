@@ -29,4 +29,11 @@ const pages = defineCollection({
 const services = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "src/data/services" }),
 });
-export const collections = { blog, pages, services };
+
+const testimonials = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/data/testimonials" }),
+});
+const singletons = defineCollection({
+  loader: glob({ pattern: "**/*.yml", base: "src/data/singletons" }),
+});
+export const collections = { blog, pages, services, testimonials, singletons };

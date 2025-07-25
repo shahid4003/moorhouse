@@ -19,7 +19,8 @@ sections:
     bgImage: /wall-paint-cans.jpg
   - type: about-us
     title: We'll help you design a space you'll love for years.
-    description: We're committed to giving you a service you can count on, whether
+    description:
+      We're committed to giving you a service you can count on, whether
       you just want to update one room or do a big renovation. We believe that
       dependability is the key to any project's success, and we want to earn
       your trust and business by giving you reliable and excellent service.
@@ -30,7 +31,8 @@ sections:
           surfaces will look great and last for a long time.
       - icon: /paint-tray-paint-pallette-paint-artist-tool-svgrepo-com.svg
         title: Color Consultation
-        text: Our team can help you pick home colors and finishes. To ensure your
+        text:
+          Our team can help you pick home colors and finishes. To ensure your
           satisfaction, we offer professional advice and suggestions.
       - icon: /blocks-group-svgrepo-com.svg
         title: Attention to Detail
@@ -44,7 +46,8 @@ sections:
     image: /assets/images/couple-painting-house-shape-on-wall-in-new-apartment.jpg
   - type: services
     heading: Our Services
-    description: Whether you're looking to refresh your space or create a new look,
+    description:
+      Whether you're looking to refresh your space or create a new look,
       our team can help with a range of painting services.
     services_list:
       - service: src/data/services/residential-painting.md
@@ -71,8 +74,10 @@ sections:
     image: /painting-the-walls-768x512.jpg
   - type: cta-banner
     title: Get Your Space Ready for a Fresh Start!
-    description: From bold colors to unique finishes, we can help you achieve the
+    description:
+      From bold colors to unique finishes, we can help you achieve the
       look you want. Contact us for your project.
-    buttonText: Contact Us
-    buttonUrl: /contact
+    button:
+      label: Contact Us
+      link: /contact
 ---
