@@ -117,7 +117,26 @@ content:
                     type: reference
                     options:
                       collection: services
-
+          - name: services-areas
+            label: Services Areas
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: string }
+              - name: stats
+                label: Stats
+                list: true
+                fields:
+                  - { name: value, label: Value, type: string }
+                  - { name: label, label: Label, type: string }
+              - name: locations
+                label: Locations
+                list: true
+                fields:
+                  - { name: name, label: Name, type: string }
+                  - { name: address, label: Address, type: string }
+                  - { name: phone, label: Phone, type: string }
+                  - { name: email, label: Email, type: string }
+                  - { name: mapSrc, label: Map Source, type: string }
           - name: cta-banner
             label: Call to Action Banner
             fields:
@@ -337,7 +356,26 @@ content:
                     - { name: title, label: Title, type: string }
                     - { name: description, label: Description, type: text, multiline: true }
                     - { name: GalleryImages, label: Image, type: image }
-
+            - name: services-areas
+              label: Services Areas
+              fields:
+                - { name: title, label: Title, type: string }
+                - { name: description, label: Description, type: string }
+                - name: stats
+                  label: Stats
+                  list: true
+                  fields:
+                    - { name: value, label: Value, type: string }
+                    - { name: label, label: Label, type: string }
+                - name: locations
+                  label: Locations
+                  list: true
+                  fields:
+                    - { name: name, label: Name, type: string }
+                    - { name: address, label: Address, type: string }
+                    - { name: phone, label: Phone, type: string }
+                    - { name: email, label: Email, type: string }
+                    - { name: mapSrc, label: Map Source, type: string }
   - name: testimonials
     label: Testimonials
     type: collection
