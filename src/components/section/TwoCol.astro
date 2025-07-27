@@ -1,0 +1,37 @@
+---
+const {
+  heading,
+  description,
+  image,
+  imageLeft = false,
+  bgColor = false,
+} = Astro.props;
+---
+
+<section class={`py-16 ${bgColor ? "bg-gray-50" : ""}`}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div
+      class={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${imageLeft ? "md:flex-row-reverse" : ""}`}
+    >
+      {
+        image && (
+          <div class="w-full">
+            <img
+              src={image}
+              alt={heading}
+              class="w-full rounded-xl object-cover shadow-md"
+            />
+          </div>
+        )
+      }
+      <div>
+        {heading && <h2 class="mb-4 text-3xl font-bold">{heading}</h2>}
+        {
+          description && (
+            <p class="mb-6 text-lg text-gray-600" set:html={description} />
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
