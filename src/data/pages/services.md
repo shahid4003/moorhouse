@@ -33,4 +33,24 @@ sections:
       - service: src/data/services/interior-painting.md
       - service: src/data/services/cabinet-painting.md
       - service: src/data/services/drywall-texturing.md
+  - type: our-work-process
+    heading: Our Work Process
+    description: Our work process is designed to provide you with a stress-free
+      painting experience, from start to finish.
+    cards:
+      - icon: /swatchbook-svgrepo-com.svg
+        title: Preparation
+      - icon: /spray-can-svgrepo-com.svg
+        title: Painting
+      - icon: /tools-svgrepo-com.svg
+        title: Inspection
+      - icon: /hands-wash-svgrepo-com.svg
+        title: Cleanup
+  - type: two-col
+    heading: Satisfaction Guarantee
+    description: We are always focused on making sure our customers are happy. We
+      won't stop working until you're happy with what we've done.
+    image: /happy-woman-painting-interior-wall-with-paint-roller-in-new-house-e1678323493469-751x1024.jpg
+    imageLeft: true
+    bgColor: true
 ---
