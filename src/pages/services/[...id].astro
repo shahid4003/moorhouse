@@ -8,6 +8,7 @@ import HeroWithQuote from "@components/section/heros/HeroWithQuote.astro";
 import SingleHero from "@components/section/heros/SingleHero.astro";
 import OurWorkProcess from "@components/section/OurWorkProcess.astro";
 import RichTextWithList from "@components/section/RichTextWithList.astro";
+import ServiceAreas from "@components/section/ServiceAreas.astro";
 import Services from "@components/section/Services.astro";
 import TestimonialSlider from "@components/section/Testimonials/TestimonialSlider.astro";
 import TestimonialTwoCol from "@components/section/Testimonials/TestimonialTwoCol.astro";
@@ -62,6 +63,8 @@ const sections = pageData?.data?.sections || [];
             return <TwoCol {...data} />;
           case "image-gallery":
             return <Gallery {...data} />;
+          case "services-areas":
+            return <ServiceAreas {...data} />;
           default:
             return null;
         }

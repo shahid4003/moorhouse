@@ -1,4 +1,6 @@
 ---
+import Divider from "@components/ui/Divider.astro";
+
 interface Feature {
   icon: string;
   title: string;
@@ -16,24 +18,24 @@ const { title, description, features, image } = Astro.props;
 ---
 
 <section class="bg-white py-20">
-  <div class="2 mx-auto grid max-w-7xl items-center gap-8 px-6 md:grid-cols-2">
+  <div class="2 mx-auto grid max-w-7xl items-center gap-8 px-6 md:grid-cols-5">
     <!-- Left -->
-    <div>
-      <h2 class="text-primary mb-4 text-4xl font-semibold">{title}</h2>
-      <p class="mb-10">{description}</p>
-
-      <div class="grid gap-6 rounded-xl bg-indigo-50 p-6 sm:grid-cols-2">
+    <div class="flex flex-col items-start justify-center gap-6 md:col-span-3">
+      <h2 class="text-primary mb-4 text-3xl font-semibold">{title}</h2>
+      <p class="mb- text-black/70">{description}</p>
+      <Divider />
+      <div class="grid gap-6 rounded-xl bg-[#F1F0FB] p-6 sm:grid-cols-2">
         {
           features.map(feature => (
             <div class="flex items-start gap-4">
               <img
                 src={feature.icon}
                 alt={feature.title}
-                class="bg-primary h-10 w-10 rounded-full object-contain p-2"
+                class="bg-primary h-12 w-12 rounded-full object-contain p-2"
               />
 
               <div>
-                <h4 class="font-medium text-indigo-900">{feature.title}</h4>
+                <h4 class="text-primary mb-4 text-xl">{feature.title}</h4>
                 <p class="text-sm text-gray-600">{feature.text}</p>
               </div>
             </div>
@@ -43,7 +45,7 @@ const { title, description, features, image } = Astro.props;
     </div>
 
     <!-- Right -->
-    <div class="h-full w-full">
+    <div class="h-full w-full md:col-span-2">
       <img
         src={image}
         alt={""}

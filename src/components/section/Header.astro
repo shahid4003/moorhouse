@@ -2,7 +2,7 @@
 import { getEntry } from "astro:content";
 let navbar = await getEntry("header", "header");
 
-const { logo, navLinks = [], actions = [] } = navbar?.data ?? {};
+const { logo, navLinks = [], actions = [] }: any = navbar?.data ?? {};
 ---
 
 <header

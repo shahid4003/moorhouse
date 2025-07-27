@@ -10,28 +10,16 @@ export interface ImageGalleryProps {
 const { title, images } = Astro.props;
 ---
 
-<div class="custom-container relative py-16 lg:!py-20">
+<div class="relative mx-auto max-w-7xl px-6 py-16 lg:!py-20">
   {
     title && (
       <h2 class="mb-8 text-center text-3xl font-semibold uppercase">{title}</h2>
     )
   }
 
-  <!-- Image counter -->
-  <div
-    class="absolute bottom-5 right-5 z-40 flex items-center gap-1 rounded-sm bg-[#061B23] p-1 text-white"
-  >
-    <span id="image-count" class="w-15 text-sm" aria-live="polite">
-      {images.length}
-      {images.length === 1 ? "Photo" : "Photos"}
-    </span>
-    <img class="h-3 w-3" src="/imgIcon.svg" alt="" aria-hidden="true" />
-  </div>
-
-  <!-- Gallery grid -->
   <div
     id="gallery"
-    class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+    class="grid grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-4"
     aria-label="Image gallery"
   >
     {
@@ -41,110 +29,90 @@ const { title, images } = Astro.props;
         </p>
       ) : (
         images.map((item, index) => (
-          <figure
-            class="gallery-item cursor-pointer overflow-hidden rounded-lg "
+          <div
+            class="gallery-item group relative cursor-pointer overflow-hidden rounded-xl shadow-md transition-all hover:shadow-lg"
             tabindex="0"
-            aria-label={`Image ${index + 1}: ${item.title}`}
+            aria-label={`${item.title} - ${item.description}`}
             data-index={index}
           >
             <img
               src={item.GalleryImages}
               alt={item.description || item.title}
-              class="h-64 w-full object-cover transition-opacity md:h-40"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
               width="300"
               height="300"
               data-index={index}
             />
-            <figcaption class="sr-only">
-              {item.title}: {item.description}
-            </figcaption>
-          </figure>
+
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-90 transition-opacity duration-300 group-hover:opacity-100">
+              <h3 class="text-base font-semibold text-white">{item.title}</h3>
+              {item.description && (
+                <p class="mt-1 text-xs text-gray-200">{item.description}</p>
+              )}
+            </div>
+          </div>
         ))
       )
     }
   </div>
 
-  <!-- Lightbox -->
   <div
     id="lightbox"
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-[#061b23df] bg-opacity-80 p-4"
+    class="bg-primary fixed inset-0 z-50 flex hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300"
     role="dialog"
     aria-modal="true"
     aria-label="Image viewer"
   >
     <button
       id="close-lightbox"
-      class="absolute right-4 top-4 z-50 rounded-full p-2 text-4xl text-white transition-colors hover:text-gray-300"
+      class="absolute right-6 top-6 text-4xl text-white transition-colors hover:text-gray-300"
       aria-label="Close image viewer"
     >
       &times;
     </button>
-    <div
-      class="relative mx-auto flex h-full w-full max-w-6xl flex-col items-center justify-center"
-    >
-      <!-- Navigation controls -->
 
-      <button
-        id="prev-image"
-        class="absolute left-4 top-1/2 z-50 -translate-y-1/2 rounded-full p-2 text-4xl text-white transition-colors hover:text-gray-300"
-        aria-label="Previous image"
-      >
-        &#10094;
-      </button>
-
-      <button
-        id="next-image"
-        class="absolute right-4 top-1/2 z-50 -translate-y-1/2 rounded-full p-2 text-4xl text-white transition-colors hover:text-gray-300"
-        aria-label="Next image"
-      >
-        &#10095;
-      </button>
-
-      <!-- Main image -->
-      <div class="relative flex h-full w-full items-center justify-center">
-        <img
-          id="lightbox-image"
-          class="h-[70vh] w-full rounded-xl object-contain"
-          src=""
-          alt=""
-          aria-hidden="true"
+    {
+      images.length > 0 && (
+        <span
+          id="image-count"
+          class="absolute left-1/2 top-6 -translate-x-1/2 rounded-md bg-black/50 px-3 py-1 text-sm text-white shadow-md"
+          aria-live="polite"
         />
-        <div
-          id="lightbox-caption"
-          class="absolute bottom-4 left-0 right-0 text-center text-sm text-white md:text-base"
-        >
-        </div>
-      </div>
+      )
+    }
 
-      <!-- Thumbnail strip -->
-      {
-        images.length > 0 && (
-          <div
-            id="thumbnail-strip"
-            class="mt-4 flex max-w-full gap-2 overflow-x-auto py-2"
-            aria-label="Image thumbnails"
-          >
-            {images.map((item, index) => (
-              <button
-                class="thumbnail h-16 w-16 flex-shrink-0 overflow-hidden rounded opacity-50 transition-opacity hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-white"
-                data-index={index}
-                aria-label={`View image ${index + 1}`}
-              >
-                <img
-                  src={item.GalleryImages}
-                  alt=""
-                  class="h-full w-full object-cover"
-                  aria-hidden="true"
-                  loading="lazy"
-                  width="64"
-                  height="64"
-                />
-              </button>
-            ))}
-          </div>
-        )
-      }
+    <button
+      id="prev-image"
+      class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-3 text-3xl text-white backdrop-blur-sm transition hover:scale-105 hover:bg-black/60"
+      aria-label="Previous image"
+    >
+      &#10094;
+    </button>
+
+    <button
+      id="next-image"
+      class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-3 text-3xl text-white backdrop-blur-sm transition hover:scale-105 hover:bg-black/60"
+      aria-label="Next image"
+    >
+      &#10095;
+    </button>
+
+    <div
+      class="relative mx-auto flex max-h-[85vh] w-full max-w-6xl flex-col items-center justify-center text-center"
+    >
+      <img
+        id="lightbox-image"
+        class="max-h-[75vh] w-auto scale-95 rounded-2xl object-contain shadow-2xl transition-transform duration-300"
+        src=""
+        alt=""
+        aria-hidden="true"
+      />
+
+      <div id="lightbox-title" class="mt-4 max-w-2xl text-base text-gray-200">
+        <span class="font-semibold" id="lightbox-title-text"></span>
+        <span class="text-gray-300" id="lightbox-description-text"></span>
+      </div>
     </div>
   </div>
 </div>
@@ -155,12 +123,15 @@ const { title, images } = Astro.props;
     const gallery = document.getElementById("gallery");
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightbox-image");
-    const lightboxCaption = document.getElementById("lightbox-caption");
+    const lightboxTitle = document.getElementById("lightbox-title-text");
+    const lightboxDescription = document.getElementById(
+      "lightbox-description-text"
+    );
     const closeLightboxBtn = document.getElementById("close-lightbox");
     const prevImageBtn = document.getElementById("prev-image");
     const nextImageBtn = document.getElementById("next-image");
     const thumbnailStrip = document.getElementById("thumbnail-strip");
-
+    const imageCount = document.getElementById("image-count");
     // State
     let currentIndex = 0;
     let galleryItems = [];
@@ -236,13 +207,25 @@ const { title, images } = Astro.props;
       currentIndex = index;
       const img = galleryItems[index].querySelector("img");
       const title = galleryItems[index].getAttribute("aria-label");
-
+      const description = galleryItems[index].getAttribute("title");
       lightboxImage.src = img.src;
       lightboxImage.alt = img.alt;
-      lightboxCaption.textContent = title;
+      lightboxTitle.textContent = title;
+      lightboxDescription.textContent = description;
+
       lightbox.classList.remove("hidden");
       document.body.style.overflow = "hidden";
+      imageCount.textContent = `${currentIndex + 1}/${galleryItems.length}`;
+      // Focus management
+      closeLightboxBtn.focus();
 
+      // Update active thumbnail
+      updateActiveThumbnail();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add("hidden");
+      imageCount.textContent = `${currentIndex + 1}/${galleryItems.length}`;
       // Focus management
       closeLightboxBtn.focus();
 
