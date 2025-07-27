@@ -296,6 +296,18 @@ content:
                 - { name: description, label: Description, type: string }
                 - { name: buttonText, label: Button Text, type: string }
                 - { name: buttonUrl, label: Button URL, type: string }
+            - name: cta-banner-with-bg
+              label: Call to Action With BackgroundImage
+              fields:
+                - { name: title, label: Title, type: string }
+                - { name: description, label: Description, type: string }
+                - name: button
+                  label: Button
+                  type: object
+                  fields:
+                    - { name: label, label: Button Text, type: string }
+                    - { name: link, label: Button URL, type: string }
+                - { name: icon, label: Background Image, type: image }
             - name: rich-text
               label: Rich Text
               fields:
