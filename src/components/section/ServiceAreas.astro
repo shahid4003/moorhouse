@@ -18,50 +18,65 @@ export interface LocationsSectionProps {
   stats: Stat[];
   locations: Location[];
 }
-
+import { Phone, Mail } from "lucide-react";
 const { title, description, stats, locations } = Astro.props;
 ---
 
 <section class="mx-auto max-w-7xl px-4 py-16">
-  <div class="mb-10 text-center">
-    <h2 class="text-3xl font-bold leading-snug text-gray-900">{title}</h2>
-    <p class="mx-auto mt-4 max-w-3xl text-gray-600">{description}</p>
-  </div>
+  <div
+    class="flex justify-between items-center lg:flex-row flex-col mb-8 gap-12"
+  >
+    <div class="mb-10 lg:w-1/2 w-full">
+      <h2 class="text-3xl font-bold leading-snug text-primary">{title}</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-gray-600">{description}</p>
+    </div>
 
-  <div class="mb-12 grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
-    {
-      stats.map((stat: Stat) => (
-        <div class="rounded-xl bg-purple-50 p-6">
-          <p class="text-3xl font-bold text-purple-700">{stat.value}</p>
-          <p class="mt-2 text-gray-700">{stat.label}</p>
-        </div>
-      ))
-    }
+    <div
+      class="mb-12 grid grid-cols-1 gap-4 text-center md:grid-cols-2 lg:w-1/2 w-full"
+      "
+    >
+      {
+        stats.map((stat: Stat, idx: number) => (
+          <div
+            class={
+              "rounded bg-purple-50 border-dashed border border-primary p-6" +
+              (idx === 0 ? " md:col-span-2" : "")
+            }
+          >
+            <p class="text-3xl font-bold text-secondary">{stat.value}</p>
+            <p class="mt-2 text-gray-700">{stat.label}</p>
+          </div>
+        ))
+      }
+    </div>
   </div>
-
   <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
     {
       locations.map((loc: Location) => (
-        <div class="flex overflow-hidden rounded-xl border border-dashed border-purple-200 shadow-sm transition hover:shadow-md">
+        <div class="flex overflow-hidden rounded-xl border border-dashed border-purple-200 shadow-sm  bg-white">
           <div class="w-1/2">
             <iframe
               src={loc.mapSrc}
-              class="h-full w-full"
+              class="h-64 w-full  duration-300"
               loading="lazy"
               allowfullscreen
             />
           </div>
 
-          <div class="flex w-1/2 flex-col justify-between p-4">
-            <h3 class="text-lg font-semibold text-gray-900">{loc.name}</h3>
-            <p class="text-sm text-gray-600">{loc.address}</p>
+          <div class="flex w-1/2 flex-col justify-between p-6">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900">{loc.name}</h3>
+              <p class="mt-1 text-sm text-gray-500">{loc.address}</p>
+            </div>
 
-            <div class="mt-4 space-y-2 text-sm">
+            <div class="mt-6 space-y-3 text-sm">
               <p class="flex items-center gap-2 text-gray-700">
-                <span class="text-green-500">📞</span> {loc.phone}
+                <Phone class="h-4 w-4 text-green-500" />
+                {loc.phone}
               </p>
               <p class="flex items-center gap-2 text-gray-700">
-                <span class="text-green-500">✉️</span> {loc.email}
+                <Mail class="h-4 w-4 text-green-500" />
+                {loc.email}
               </p>
             </div>
           </div>

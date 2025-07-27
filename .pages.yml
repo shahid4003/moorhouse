@@ -23,6 +23,45 @@ content:
             summary: "{type} section ({index})"
         blockKey: type
         blocks:
+          - name: about-us
+            label: About Us
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: string }
+              - name: features
+                label: Features
+                list: true
+                fields:
+                  - { name: icon, type: image }
+                  - { name: title, type: string }
+                  - { name: text, type: string }
+              - { name: image, label: Image URL, type: image }
+
+          - name: cta-banner
+            label: Call to Action Banner
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: string }
+              - name: button
+                label: Button
+                type: object
+                fields:
+                  - { name: label, label: Button Text, type: string }
+                  - { name: link, label: Button URL, type: string }
+
+          - name: cta-banner-with-bg
+            label: Call to Action With BackgroundImage
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: string }
+              - name: button
+                label: Button
+                type: object
+                fields:
+                  - { name: label, label: Button Text, type: string }
+                  - { name: link, label: Button URL, type: string }
+              - { name: icon, label: Background Image, type: image }
+
           - name: hero-two-columns
             label: Hero Two Columns
             fields:
@@ -50,39 +89,16 @@ content:
                 list: true
               - { name: bgImage, label: Background Image URL, type: image }
 
-          - name: single-hero
-            label: Single Hero
+          - name: image-gallery
+            label: Image Gallery
             fields:
-              - { name: title, label: Title, type: string }
-              - { name: description, label: Description, type: string }
-              - { name: bgImage, label: Background Image URL, type: image }
-
-          - name: testimonial-twocol
-            label: Testimonial Two Column
-            fields:
-              - { name: heading, label: Heading, type: string }
-              - { name: description, label: Description, type: string }
-              - { name: image, label: Image URL, type: image }
-
-          - name: testimonial-slider
-            label: Testimonial Slider
-            fields:
-              - { name: heading, label: Heading, type: string }
-              - { name: subheading, label: Subheading, type: string }
-
-          - name: about-us
-            label: About Us
-            fields:
-              - { name: title, label: Title, type: string }
-              - { name: description, label: Description, type: string }
-              - name: features
-                label: Features
+              - name: images
+                label: Gallery Items
                 list: true
                 fields:
-                  - { name: icon, type: image }
-                  - { name: title, type: string }
-                  - { name: text, type: string }
-              - { name: image, label: Image URL, type: image }
+                  - { name: title, label: Title, type: string }
+                  - { name: description, label: Description, type: text, multiline: true }
+                  - { name: GalleryImages, label: Image, type: image }
 
           - name: our-work-process
             label: Our Work Process
@@ -95,6 +111,18 @@ content:
                 fields:
                   - { name: icon, type: image }
                   - { name: title, type: string }
+
+          - name: rich-text
+            label: Rich Text
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: content, label: Content, type: rich-text }
+              - { name: showList, label: Show List, type: boolean, default: false }
+              - name: list
+                label: List Items
+                list: true
+                fields:
+                  - { name: item, label: List Item, type: string }
 
           - name: services
             label: Services
@@ -117,6 +145,7 @@ content:
                     type: reference
                     options:
                       collection: services
+
           - name: services-areas
             label: Services Areas
             fields:
@@ -137,17 +166,81 @@ content:
                   - { name: phone, label: Phone, type: string }
                   - { name: email, label: Email, type: string }
                   - { name: mapSrc, label: Map Source, type: string }
+
+          - name: single-hero
+            label: Single Hero
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: string }
+              - { name: bgImage, label: Background Image URL, type: image }
+
+          - name: testimonial-slider
+            label: Testimonial Slider
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: subheading, label: Subheading, type: string }
+
+          - name: testimonial-twocol
+            label: Testimonial Two Column
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: description, label: Description, type: string }
+              - { name: image, label: Image URL, type: image }
+
+          - name: two-col
+            label: Two Column Section
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: description, label: Description, type: rich-text }
+              - { name: image, label: Image, type: image }
+              - { name: imageLeft, label: Image on Left, type: boolean, default: false }
+              - { name: bgColor, label: Add Background, type: boolean, default: false }
+
+  - name: services
+    label: Services
+    type: collection
+    path: src/data/services
+    filename: "{primary}.md"
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: slug, label: Slug, type: string }
+      - { name: seoTitle, label: SEO Title, type: string }
+      - { name: seoDescription, label: SEO Description, type: string }
+      - { name: published, label: Published, type: boolean, default: false }
+      - { name: showAside, label: Show Quote and Services List on the Side, type: boolean, default: false }
+      - { name: featuredImage, label: Featured Image, type: image }
+      - { name: shortDescription, label: Short Description, type: string }
+      - name: sections
+        label: Service Page Sections
+        type: block
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{type} section ({index})"
+        blockKey: type
+        blocks:
+          - name: about-us
+            label: About Us
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: string }
+              - name: features
+                label: Features
+                list: true
+                fields:
+                  - { name: icon, type: image }
+                  - { name: title, type: string }
+                  - { name: text, type: string }
+              - { name: image, label: Image URL, type: image }
+
           - name: cta-banner
             label: Call to Action Banner
             fields:
               - { name: title, label: Title, type: string }
               - { name: description, label: Description, type: string }
-              - name: button
-                label: Button
-                type: object
-                fields:
-                  - { name: label, label: Button Text, type: string }
-                  - { name: link, label: Button URL, type: string }
+              - { name: buttonText, label: Button Text, type: string }
+              - { name: buttonUrl, label: Button URL, type: string }
+
           - name: cta-banner-with-bg
             label: Call to Action With BackgroundImage
             fields:
@@ -160,6 +253,57 @@ content:
                   - { name: label, label: Button Text, type: string }
                   - { name: link, label: Button URL, type: string }
               - { name: icon, label: Background Image, type: image }
+
+          - name: hero-two-columns
+            label: Hero Two Columns
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: descruption, label: Description, type: string }
+              - name: buttons
+                label: Buttons
+                fields:
+                  - { name: label, type: string }
+                  - { name: url, type: string }
+                list: true
+              - { name: image, label: Image URL, type: image }
+
+          - name: hero-with-quote
+            label: Hero with Quote
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: subtitle, label: Subtitle, type: text }
+              - { name: phone, label: Phone, type: string }
+              - name: buttons
+                label: Buttons
+                fields:
+                  - { name: label, type: string }
+                  - { name: url, type: string }
+                list: true
+              - { name: bgImage, label: Background Image URL, type: image }
+
+          - name: image-gallery
+            label: Image Gallery
+            fields:
+              - name: images
+                label: Gallery Items
+                list: true
+                fields:
+                  - { name: title, label: Title, type: string }
+                  - { name: description, label: Description, type: text, multiline: true }
+                  - { name: GalleryImages, label: Image, type: image }
+
+          - name: our-work-process
+            label: Our Work Process
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: description, label: Description, type: string }
+              - name: cards
+                label: Cards
+                list: true
+                fields:
+                  - { name: icon, type: image }
+                  - { name: title, type: string }
+
           - name: rich-text
             label: Rich Text
             fields:
@@ -168,9 +312,73 @@ content:
               - { name: showList, label: Show List, type: boolean, default: false }
               - name: list
                 label: List Items
-                list: true
+                list: true 
                 fields:
                   - { name: item, label: List Item, type: string }
+
+          - name: services
+            label: Services
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: description, label: Description, type: string }
+              - name: backgroundImage
+                label: Background Image
+                type: image
+              - name: threeColumns
+                label: Three Columns Layout
+                type: boolean
+                default: false
+              - name: services_list
+                label: Service Items
+                list: true
+                fields:
+                  - name: service
+                    label: Service Reference
+                    type: reference
+                    options:
+                      collection: services
+
+          - name: services-areas
+            label: Services Areas
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: string }
+              - name: stats
+                label: Stats
+                list: true
+                fields:
+                  - { name: value, label: Value, type: string }
+                  - { name: label, label: Label, type: string }
+              - name: locations
+                label: Locations
+                list: true
+                fields:
+                  - { name: name, label: Name, type: string }
+                  - { name: address, label: Address, type: string }
+                  - { name: phone, label: Phone, type: string }
+                  - { name: email, label: Email, type: string }
+                  - { name: mapSrc, label: Map Source, type: string }
+
+          - name: single-hero
+            label: Single Hero
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: description, label: Description, type: string }
+              - { name: bgImage, label: Background Image URL, type: image }
+
+          - name: testimonial-slider
+            label: Testimonial Slider
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: subheading, label: Subheading, type: string }
+
+          - name: testimonial-twocol
+            label: Testimonial Two Column
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: description, label: Description, type: string }
+              - { name: image, label: Image URL, type: image }
+
           - name: two-col
             label: Two Column Section
             fields:
@@ -179,253 +387,7 @@ content:
               - { name: image, label: Image, type: image }
               - { name: imageLeft, label: Image on Left, type: boolean, default: false }
               - { name: bgColor, label: Add Background, type: boolean, default: false }
-          - name: image-gallery
-            label: Image Gallery
-            fields:
-                - name: images
-                  label: Gallery Items
-                  list: true
-                  fields:
-                    - { name: title, label: Title, type: string }
-                    - { name: description, label: Description, type: text, multiline: true }
-                    - { name: GalleryImages, label: Image, type: image }  
 
-  - name: services
-    label: Services
-    type: collection
-    path: src/data/services
-    filename: "{primary}.md"
-    fields:
-        - { name: title, label: Title, type: string }
-        - { name: slug, label: Slug, type: string }
-        - { name: seoTitle, label: SEO Title, type: string }
-        - { name: seoDescription, label: SEO Description, type: string }
-        - { name: published, label: Published, type: boolean, default: false }
-        - { name: showAside, label: Show Quote and Services List on the Side, type: boolean, default: false }
-        - { name: featuredImage, label: Featured Image, type: image }
-        - { name: shortDescription, label: Short Description, type: string }
-        - name: sections
-          label: Service Page Sections
-          type: block
-          list:
-            collapsible:
-              collapsed: true
-              summary: "{type} section ({index})"
-          blockKey: type
-          blocks:
-            - name: hero-two-columns
-              label: Hero Two Columns
-              fields:
-                - { name: heading, label: Heading, type: string }
-                - { name: descruption, label: Description, type: string }
-                - name: buttons
-                  label: Buttons
-                  fields:
-                    - { name: label, type: string }
-                    - { name: url, type: string }
-                  list: true
-                - { name: image, label: Image URL, type: image }
-    
-            - name: hero-with-quote
-              label: Hero with Quote
-              fields:
-                - { name: title, label: Title, type: string }
-                - { name: subtitle, label: Subtitle, type: text }
-                - { name: phone, label: Phone, type: string }
-                - name: buttons
-                  label: Buttons
-                  fields:
-                    - { name: label, type: string }
-                    - { name: url, type: string }
-                  list: true
-                - { name: bgImage, label: Background Image URL, type: image }
-    
-            - name: single-hero
-              label: Single Hero
-              fields:
-                - { name: title, label: Title, type: string }
-                - { name: description, label: Description, type: string }
-                - { name: bgImage, label: Background Image URL, type: image }
-    
-            - name: testimonial-twocol
-              label: Testimonial Two Column
-              fields:
-                - { name: heading, label: Heading, type: string }
-                - { name: description, label: Description, type: string }
-                - { name: image, label: Image URL, type: image }
-    
-            - name: testimonial-slider
-              label: Testimonial Slider
-              fields:
-                - { name: heading, label: Heading, type: string }
-                - { name: subheading, label: Subheading, type: string }
-    
-            - name: about-us
-              label: About Us
-              fields:
-                - { name: title, label: Title, type: string }
-                - { name: description, label: Description, type: string }
-                - name: features
-                  label: Features
-                  list: true
-                  fields:
-                    - { name: icon, type: image }
-                    - { name: title, type: string }
-                    - { name: text, type: string }
-                - { name: image, label: Image URL, type: image }
-    
-            - name: our-work-process
-              label: Our Work Process
-              fields:
-                - { name: heading, label: Heading, type: string }
-                - { name: description, label: Description, type: string }
-                - name: cards
-                  label: Cards
-                  list: true
-                  fields:
-                    - { name: icon, type: image }
-                    - { name: title, type: string }
-    
-            - name: services
-              label: Services
-              fields:
-                - { name: heading, label: Heading, type: string }
-                - { name: description, label: Description, type: string }
-                - name: backgroundImage
-                  label: Background Image
-                  type: image
-                - name: threeColumns
-                  label: Three Columns Layout
-                  type: boolean
-                  default: false
-                - name: services_list
-                  label: Service Items
-                  list: true
-                  fields:
-                    - name: service
-                      label: Service Reference
-                      type: reference
-                      options:
-                        collection: services
-    
-            - name: cta-banner
-              label: Call to Action Banner
-              fields:
-                - { name: title, label: Title, type: string }
-                - { name: description, label: Description, type: string }
-                - { name: buttonText, label: Button Text, type: string }
-                - { name: buttonUrl, label: Button URL, type: string }
-            - name: cta-banner-with-bg
-              label: Call to Action With BackgroundImage
-              fields:
-                - { name: title, label: Title, type: string }
-                - { name: description, label: Description, type: string }
-                - name: button
-                  label: Button
-                  type: object
-                  fields:
-                    - { name: label, label: Button Text, type: string }
-                    - { name: link, label: Button URL, type: string }
-                - { name: icon, label: Background Image, type: image }
-            - name: rich-text
-              label: Rich Text
-              fields:
-                - { name: heading, label: Heading, type: string }
-                - { name: content, label: Content, type: rich-text }
-                - { name: showList, label: Show List, type: boolean, default: false }
-                - name: list
-                  label: List Items
-                  list: true 
-                  fields:
-                    - { name: item, label: List Item, type: string }
-            - name: two-col
-              label: Two Column Section
-              fields:
-                - { name: heading, label: Heading, type: string }
-                - { name: description, label: Description, type: rich-text }
-                - { name: image, label: Image, type: image }
-                - { name: imageLeft, label: Image on Left, type: boolean, default: false }
-                - { name: bgColor, label: Add Background, type: boolean, default: false }
-            - name: image-gallery
-              label: Image Gallery
-              fields:
-                - name: images
-                  label: Gallery Items
-                  list: true
-                  fields:
-                    - { name: title, label: Title, type: string }
-                    - { name: description, label: Description, type: text, multiline: true }
-                    - { name: GalleryImages, label: Image, type: image }
-            - name: services-areas
-              label: Services Areas
-              fields:
-                - { name: title, label: Title, type: string }
-                - { name: description, label: Description, type: string }
-                - name: stats
-                  label: Stats
-                  list: true
-                  fields:
-                    - { name: value, label: Value, type: string }
-                    - { name: label, label: Label, type: string }
-                - name: locations
-                  label: Locations
-                  list: true
-                  fields:
-                    - { name: name, label: Name, type: string }
-                    - { name: address, label: Address, type: string }
-                    - { name: phone, label: Phone, type: string }
-                    - { name: email, label: Email, type: string }
-                    - { name: mapSrc, label: Map Source, type: string }
-  - name: testimonials
-    label: Testimonials
-    type: collection
-    filename: "{primary}.md"
-    path: src/data/testimonials
-    fields:
-      - { name: name, label: Name, type: string }
-      - { name: role, label: Role, type: string }
-      - { name: quote, label: Quote, type: text }
-      - { name: image, label: Profile Image, type: image }
-      - { name: rating, label: Rating, type: number, }
-   
-  - name: Header
-    label: Header
-    type: file
-    path: src/data/header/header.md
-    fields:
-      - name: logo
-        label: Logo
-        type: image
-      - name: navLinks
-        label: Navigation Links
-        list: true
-        fields:
-          - name: label
-            label: Label
-            type: string
-          - name: href
-            label: URL
-            type: string
-          - name: sublinks
-            label: Submenu Links
-            list: true
-            fields:
-              - name: label
-                label: Label
-                type: string
-              - name: href
-                label: URL
-                type: string
-      - name: actions
-        label: Action Buttons
-        list: true
-        fields:
-          - name: label
-            label: Label
-            type: string
-          - name: href
-            label: URL
-            type: string
   - name: Footer
     label: Footer
     type: file
@@ -480,3 +442,54 @@ content:
               - name: label
                 label: Social Label
                 type: string
+
+  - name: Header
+    label: Header
+    type: file
+    path: src/data/header/header.md
+    fields:
+      - name: logo
+        label: Logo
+        type: image
+      - name: navLinks
+        label: Navigation Links
+        list: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: href
+            label: URL
+            type: string
+          - name: sublinks
+            label: Submenu Links
+            list: true
+            fields:
+              - name: label
+                label: Label
+                type: string
+              - name: href
+                label: URL
+                type: string
+      - name: actions
+        label: Action Buttons
+        list: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: href
+            label: URL
+            type: string
+
+  - name: testimonials
+    label: Testimonials
+    type: collection
+    filename: "{primary}.md"
+    path: src/data/testimonials
+    fields:
+      - { name: name, label: Name, type: string }
+      - { name: role, label: Role, type: string }
+      - { name: quote, label: Quote, type: text }
+      - { name: image, label: Profile Image, type: image }
+      - { name: rating, label: Rating, type: number }

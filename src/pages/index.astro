@@ -1,14 +1,20 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-
-import HeroWithQuote from "@components/section/heros/HeroWithQuote.astro";
 import AboutUs from "@components/section/AboutUs.astro";
-import Services from "@components/section/Services.astro";
-import OurWorkProcess from "@components/section/OurWorkProcess.astro";
-import TestimonialTwoCol from "@components/section/Testimonials/TestimonialTwoCol.astro";
 import CtaBanner from "@components/section/CtaBanner.astro";
 import CtaBannerWithBG from "@components/section/CtaBannerWithBG.astro";
+import Gallery from "@components/section/Gallery.astro";
+import HeroTypeOne from "@components/section/heros/HeroTypeOne.astro";
+import HeroWithQuote from "@components/section/heros/HeroWithQuote.astro";
+import SingleHero from "@components/section/heros/SingleHero.astro";
+import OurWorkProcess from "@components/section/OurWorkProcess.astro";
+import RichTextWithList from "@components/section/RichTextWithList.astro";
+import ServiceAreas from "@components/section/ServiceAreas.astro";
+import Services from "@components/section/Services.astro";
+import TestimonialSlider from "@components/section/Testimonials/TestimonialSlider.astro";
+import TestimonialTwoCol from "@components/section/Testimonials/TestimonialTwoCol.astro";
+import TwoCol from "@components/section/TwoCol.astro";
 import { getEntry } from "astro:content";
 
 const home = await getEntry("pages", "home");
@@ -22,6 +28,8 @@ const sections = home?.data.sections ?? [];
         switch (data.type) {
           case "hero-with-quote":
             return <HeroWithQuote {...data} />;
+          case "hero-two-columns":
+            return <HeroTypeOne {...data} />;
           case "about-us":
             return <AboutUs {...data} />;
           case "services":
@@ -30,10 +38,22 @@ const sections = home?.data.sections ?? [];
             return <OurWorkProcess {...data} />;
           case "testimonial-twocol":
             return <TestimonialTwoCol {...data} />;
+          case "testimonial-slider":
+            return <TestimonialSlider {...data} />;
           case "cta-banner":
             return <CtaBanner {...data} />;
           case "cta-banner-with-bg":
             return <CtaBannerWithBG {...data} />;
+          case "single-hero":
+            return <SingleHero {...data} />;
+          case "rich-text":
+            return <RichTextWithList {...data} />;
+          case "two-col":
+            return <TwoCol {...data} />;
+          case "image-gallery":
+            return <Gallery {...data} />;
+          case "services-areas":
+            return <ServiceAreas {...data} />;
           default:
             return null;
         }
