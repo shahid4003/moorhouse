@@ -26,7 +26,8 @@ sections:
       - item: Commitment to exceptional customer satisfaction.
   - type: services
     heading: Services
-    threeColumns: false
+    backgroundImage: /painted-artistic-background-1.jpg
+    threeColumns: true
     services_list:
       - service: src/data/services/residential-painting.md
       - service: src/data/services/commercial-painting.md
