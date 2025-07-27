@@ -31,5 +31,4 @@ export default defineConfig({
 
     plugins: [tailwindcss()],
   },
-  scopedStyleStrategy: "where",
 });
