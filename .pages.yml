@@ -160,6 +160,16 @@ content:
               - { name: image, label: Image, type: image }
               - { name: imageLeft, label: Image on Left, type: boolean, default: false }
               - { name: bgColor, label: Add Background, type: boolean, default: false }
+          - name: image-gallery
+            label: Image Gallery
+            fields:
+                - name: images
+                  label: Gallery Items
+                  list: true
+                  fields:
+                    - { name: title, label: Title, type: string }
+                    - { name: description, label: Description, type: text, multiline: true }
+                    - { name: GalleryImages, label: Image, type: image }  
 
   - name: services
     label: Services
@@ -305,8 +315,17 @@ content:
                 - { name: image, label: Image, type: image }
                 - { name: imageLeft, label: Image on Left, type: boolean, default: false }
                 - { name: bgColor, label: Add Background, type: boolean, default: false }
+            - name: image-gallery
+              label: Image Gallery
+              fields:
+                - name: images
+                  label: Gallery Items
+                  list: true
+                  fields:
+                    - { name: title, label: Title, type: string }
+                    - { name: description, label: Description, type: text, multiline: true }
+                    - { name: GalleryImages, label: Image, type: image }
 
-     
   - name: testimonials
     label: Testimonials
     type: collection

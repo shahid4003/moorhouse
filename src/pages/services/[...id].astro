@@ -17,7 +17,7 @@ import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
 export const getStaticPaths = async () => {
-  const pages = await getCollection("pages");
+  const pages = await getCollection("services");
   const filteredPages = pages.filter(page => page.data.published !== false);
   return filteredPages.map(page => {
     return {
@@ -27,7 +27,7 @@ export const getStaticPaths = async () => {
   });
 };
 const { id } = Astro.params;
-const pageData = await getEntry("pages", id);
+const pageData = await getEntry("services", id);
 const sections = pageData?.data?.sections || [];
 ---
 

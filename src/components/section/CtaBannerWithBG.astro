@@ -1,4 +1,6 @@
 ---
+import Divider from "@components/ui/Divider.astro";
+
 const { title, description, button, icon = "" } = Astro.props;
 ---
 
@@ -9,7 +11,7 @@ const { title, description, button, icon = "" } = Astro.props;
     : ""}
 >
   <div class="relative px-6 py-24 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
+    <div class="mx-auto w-fit max-w-2xl text-center">
       <h2
         class="text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl"
       >
@@ -18,6 +20,7 @@ const { title, description, button, icon = "" } = Astro.props;
       <p class="mx-auto mt-6 max-w-xl text-pretty text-lg/8 text-gray-300">
         {description}
       </p>
+      <Divider purple />
       <div class="mt-10 flex items-center justify-center gap-x-6">
         <a
           href={button.link}

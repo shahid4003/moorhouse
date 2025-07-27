@@ -1,4 +1,5 @@
 ---
+import Divider from "@components/ui/Divider.astro";
 import { getCollection } from "astro:content";
 
 const { heading, description, image } = Astro.props;
@@ -13,8 +14,8 @@ const reviews = await getCollection("testimonials");
           {heading}
         </h2>
         <p class="text-xl text-gray-600">{description}</p>
+        <Divider />
       </div>
-
       <!-- Swiper Component -->
       <div class="swiper testimonial">
         <div class="swiper-wrapper">

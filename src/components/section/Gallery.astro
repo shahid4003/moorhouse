@@ -1,0 +1,334 @@
+---
+export interface ImageGalleryProps {
+  images: {
+    title: string;
+    description: string;
+    GalleryImages: string;
+  }[];
+}
+
+const { title, images } = Astro.props;
+---
+
+<div class="custom-container relative py-16 lg:!py-20">
+  {
+    title && (
+      <h2 class="mb-8 text-center text-3xl font-semibold uppercase">{title}</h2>
+    )
+  }
+
+  <!-- Image counter -->
+  <div
+    class="absolute bottom-5 right-5 z-40 flex items-center gap-1 rounded-sm bg-[#061B23] p-1 text-white"
+  >
+    <span id="image-count" class="w-15 text-sm" aria-live="polite">
+      {images.length}
+      {images.length === 1 ? "Photo" : "Photos"}
+    </span>
+    <img class="h-3 w-3" src="/imgIcon.svg" alt="" aria-hidden="true" />
+  </div>
+
+  <!-- Gallery grid -->
+  <div
+    id="gallery"
+    class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+    aria-label="Image gallery"
+  >
+    {
+      images.length === 0 ? (
+        <p class="col-span-full text-center text-gray-500">
+          No images available.
+        </p>
+      ) : (
+        images.map((item, index) => (
+          <figure
+            class="gallery-item cursor-pointer overflow-hidden rounded-lg "
+            tabindex="0"
+            aria-label={`Image ${index + 1}: ${item.title}`}
+            data-index={index}
+          >
+            <img
+              src={item.GalleryImages}
+              alt={item.description || item.title}
+              class="h-64 w-full object-cover transition-opacity md:h-40"
+              loading="lazy"
+              width="300"
+              height="300"
+              data-index={index}
+            />
+            <figcaption class="sr-only">
+              {item.title}: {item.description}
+            </figcaption>
+          </figure>
+        ))
+      )
+    }
+  </div>
+
+  <!-- Lightbox -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-[#061b23df] bg-opacity-80 p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image viewer"
+  >
+    <button
+      id="close-lightbox"
+      class="absolute right-4 top-4 z-50 rounded-full p-2 text-4xl text-white transition-colors hover:text-gray-300"
+      aria-label="Close image viewer"
+    >
+      &times;
+    </button>
+    <div
+      class="relative mx-auto flex h-full w-full max-w-6xl flex-col items-center justify-center"
+    >
+      <!-- Navigation controls -->
+
+      <button
+        id="prev-image"
+        class="absolute left-4 top-1/2 z-50 -translate-y-1/2 rounded-full p-2 text-4xl text-white transition-colors hover:text-gray-300"
+        aria-label="Previous image"
+      >
+        &#10094;
+      </button>
+
+      <button
+        id="next-image"
+        class="absolute right-4 top-1/2 z-50 -translate-y-1/2 rounded-full p-2 text-4xl text-white transition-colors hover:text-gray-300"
+        aria-label="Next image"
+      >
+        &#10095;
+      </button>
+
+      <!-- Main image -->
+      <div class="relative flex h-full w-full items-center justify-center">
+        <img
+          id="lightbox-image"
+          class="h-[70vh] w-full rounded-xl object-contain"
+          src=""
+          alt=""
+          aria-hidden="true"
+        />
+        <div
+          id="lightbox-caption"
+          class="absolute bottom-4 left-0 right-0 text-center text-sm text-white md:text-base"
+        >
+        </div>
+      </div>
+
+      <!-- Thumbnail strip -->
+      {
+        images.length > 0 && (
+          <div
+            id="thumbnail-strip"
+            class="mt-4 flex max-w-full gap-2 overflow-x-auto py-2"
+            aria-label="Image thumbnails"
+          >
+            {images.map((item, index) => (
+              <button
+                class="thumbnail h-16 w-16 flex-shrink-0 overflow-hidden rounded opacity-50 transition-opacity hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-white"
+                data-index={index}
+                aria-label={`View image ${index + 1}`}
+              >
+                <img
+                  src={item.GalleryImages}
+                  alt=""
+                  class="h-full w-full object-cover"
+                  aria-hidden="true"
+                  loading="lazy"
+                  width="64"
+                  height="64"
+                />
+              </button>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    // DOM elements
+    const gallery = document.getElementById("gallery");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const closeLightboxBtn = document.getElementById("close-lightbox");
+    const prevImageBtn = document.getElementById("prev-image");
+    const nextImageBtn = document.getElementById("next-image");
+    const thumbnailStrip = document.getElementById("thumbnail-strip");
+
+    // State
+    let currentIndex = 0;
+    let galleryItems = [];
+
+    // Initialize
+    function initGallery() {
+      galleryItems = Array.from(gallery.querySelectorAll(".gallery-item"));
+
+      // Set up event listeners
+      galleryItems.forEach(item => {
+        item.addEventListener("click", handleGalleryItemClick);
+        item.addEventListener("keydown", e => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleGalleryItemClick(e);
+          }
+        });
+      });
+
+      if (thumbnailStrip) {
+        thumbnailStrip.querySelectorAll(".thumbnail").forEach(thumb => {
+          thumb.addEventListener("click", handleThumbnailClick);
+        });
+      }
+
+      closeLightboxBtn.addEventListener("click", closeLightbox);
+      prevImageBtn.addEventListener("click", showPrevImage);
+      nextImageBtn.addEventListener("click", showNextImage);
+
+      // Keyboard navigation
+      document.addEventListener("keydown", handleKeyDown);
+      lightbox.addEventListener("click", handleLightboxClick);
+    }
+
+    // Event handlers
+    function handleGalleryItemClick(e) {
+      const item = e.currentTarget;
+      currentIndex = parseInt(item.dataset.index);
+      openLightbox(currentIndex);
+    }
+
+    function handleThumbnailClick(e) {
+      currentIndex = parseInt(e.currentTarget.dataset.index);
+      openLightbox(currentIndex);
+    }
+
+    function handleKeyDown(e) {
+      if (lightbox.classList.contains("hidden")) return;
+
+      switch (e.key) {
+        case "Escape":
+          closeLightbox();
+          break;
+        case "ArrowLeft":
+          showPrevImage();
+          break;
+        case "ArrowRight":
+          showNextImage();
+          break;
+      }
+    }
+
+    function handleLightboxClick(e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    }
+
+    // Lightbox functions
+    function openLightbox(index) {
+      if (index < 0 || index >= galleryItems.length) return;
+
+      currentIndex = index;
+      const img = galleryItems[index].querySelector("img");
+      const title = galleryItems[index].getAttribute("aria-label");
+
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightboxCaption.textContent = title;
+      lightbox.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+
+      // Focus management
+      closeLightboxBtn.focus();
+
+      // Update active thumbnail
+      updateActiveThumbnail();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add("hidden");
+      document.body.style.overflow = "";
+
+      // Return focus to the gallery item that opened the lightbox
+      if (galleryItems[currentIndex]) {
+        galleryItems[currentIndex].focus();
+      }
+    }
+
+    function showPrevImage() {
+      const newIndex =
+        (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      openLightbox(newIndex);
+    }
+
+    function showNextImage() {
+      const newIndex = (currentIndex + 1) % galleryItems.length;
+      openLightbox(newIndex);
+    }
+
+    function updateActiveThumbnail() {
+      if (!thumbnailStrip) return;
+
+      const thumbnails = thumbnailStrip.querySelectorAll(".thumbnail");
+      thumbnails.forEach(thumb => {
+        const index = parseInt(thumb.dataset.index);
+        thumb.classList.toggle("opacity-100", index === currentIndex);
+        thumb.classList.toggle("opacity-50", index !== currentIndex);
+      });
+    }
+
+    // Initialize when DOM is loaded
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initGallery);
+    } else {
+      initGallery();
+    }
+  })();
+</script>
+
+<style>
+  /* Custom scrollbar for thumbnail strip */
+  #thumbnail-strip::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  #thumbnail-strip::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  #thumbnail-strip::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+
+  /* Focus styles */
+  .gallery-item:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+
+  /* Animation for lightbox */
+  #lightbox {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  #lightbox:not(.hidden) {
+    opacity: 1;
+  }
+
+  #lightbox-image {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+  }
+
+  #lightbox:not(.hidden) #lightbox-image {
+    transform: scale(1);
+  }
+</style>
