@@ -24,4 +24,13 @@ sections:
       - item: High-quality eco-friendly paint options available.
       - item: Competitive and affordable pricing for all services.
       - item: Commitment to exceptional customer satisfaction.
+  - type: services
+    heading: Services
+    services_list:
+      - service: src/data/services/residential-painting.md
+      - service: src/data/services/commercial-painting.md
+      - service: src/data/services/exterior-painting.md
+      - service: src/data/services/interior-painting.md
+      - service: src/data/services/cabinet-painting.md
+      - service: src/data/services/drywall-texturing.md
 ---
