@@ -18,4 +18,10 @@ sections:
       decision. That's why we want to ensure that you are completely satisfied
       with the end result of our work.
     showList: true
+    list:
+      - item: Skilled and experienced team of professional painters.
+      - item: Flexible scheduling to accommodate your needs.
+      - item: High-quality eco-friendly paint options available.
+      - item: Competitive and affordable pricing for all services.
+      - item: Commitment to exceptional customer satisfaction.
 ---
