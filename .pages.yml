@@ -149,10 +149,10 @@ content:
             label: Two Column Section
             fields:
               - { name: heading, label: Heading, type: string }
-              - { name: description, label: Description, type: string }
+              - { name: description, label: Description, type: rich-text }
               - { name: image, label: Image, type: image }
               - { name: imageLeft, label: Image on Left, type: boolean, default: false }
-              - { name: bgColor, label: Background Gray, type: boolean, default: false }
+              - { name: bgColor, label: Add Background, type: boolean, default: false }
 
   - name: services
     label: Services
@@ -268,7 +268,6 @@ content:
                 - { name: description, label: Description, type: string }
                 - { name: buttonText, label: Button Text, type: string }
                 - { name: buttonUrl, label: Button URL, type: string }
-                - { name: bgColor, label: Background Color, type: color }
             - name: rich-text
               label: Rich Text
               fields:
@@ -284,10 +283,10 @@ content:
               label: Two Column Section
               fields:
                 - { name: heading, label: Heading, type: string }
-                - { name: description, label: Description, type: string }
+                - { name: description, label: Description, type: rich-text }
                 - { name: image, label: Image, type: image }
                 - { name: imageLeft, label: Image on Left, type: boolean, default: false }
-                - { name: bgColor, label: Background Gray, type: boolean, default: false }
+                - { name: bgColor, label: Add Background, type: boolean, default: false }
 
      
   - name: testimonials
