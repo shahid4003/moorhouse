@@ -42,6 +42,20 @@ sections:
         title: Customized Solutions
         text: We understand that every homeowner is different. We offer painting
           services that fit your style and budget.
+  - type: image-gallery
+    images:
+      - title: Rustic Retreats
+        description: Boston, MA
+        GalleryImages: /couple-painting-house-shape-on-wall-in-new-apartment.jpg
+      - title: Luxury Living
+        description: Las Vegas, NV
+        GalleryImages: /young-man-standing-on-stepladder-by-wall-and-hanging-abstract-painting.jpg
+      - title: "Coastal Cottage "
+        description: San Francisco, CA
+        GalleryImages: /white-sofa-and-grey-accents-1024x682.jpg
+      - title: Industrial Chic
+        description: Denver, CO
+        GalleryImages: /do-it-the-right-way-man-in-respirator-mask-painting-wooden-planks-at-workshop.jpg
   - type: rich-text
     heading: Why Choose Our Residential Painting Service?
     content: Whether you want to change the look of just one room or your whole
