@@ -17,3 +17,15 @@
   bottom: 0;
   width: 100%;
 }
+.bg-gradient-services::before {
+  content: "";
+  background: linear-gradient(#ffffff);
+  display: block;
+  position: absolute;
+  opacity: 0.84;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}

@@ -24,18 +24,14 @@ const gridCols = threeColumns
 ---
 
 <section
-  class="relative mx-auto w-full max-w-7xl px-4 py-16"
+  class={`relative bg-gradient-services w-full py-16${backgroundImage ? "" : " mx-auto max-w-7xl px-4"}`}
   style={backgroundImage
-    ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
+    ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; `
     : ""}
 >
   <div
-    class={backgroundImage
-      ? "absolute inset-0 bg-black/40 pointer-events-none"
-      : ""}
+    class={backgroundImage ? "relative z-10 mx-auto w-full max-w-7xl px-4" : ""}
   >
-  </div>
-  <div class={backgroundImage ? "relative z-10" : ""}>
     <h2 class="text-3xl font-bold text-gray-800">{heading}</h2>
     <div class={`mt-8 grid grid-cols-1 gap-6 ${gridCols}`}>
       {
@@ -49,11 +45,13 @@ const gridCols = threeColumns
                   <img
                     src={featuredImage}
                     alt={title}
-                    class="mb-3 h-40 w-full object-cover"
+                    class="mb-3 h-56 w-full object-cover"
                   />
                 )}
                 <div class="w-full p-6">
-                  <h3 class="mb-2 text-lg font-bold text-gray-800">{title}</h3>
+                  <h3 class="text-primary mb-2  text-2xl font-semibold">
+                    {title}
+                  </h3>
                   <p class="mb-4 text-sm text-gray-600">{shortDescription}</p>
                   <a
                     href={`/services/${slug}`}
