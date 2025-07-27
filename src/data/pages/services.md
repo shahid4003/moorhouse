@@ -70,4 +70,17 @@ sections:
     image: /happy-woman-painting-interior-wall-with-paint-roller-in-new-house-e1678323493469-751x1024.jpg
     imageLeft: true
     bgColor: true
+  - type: testimonial-twocol
+    heading: Customer Testimonials
+    description: From small repairs to large commercial projects, our skills and
+      customer service exceed expectations. Discover why our customers love us!
+    image: /painting-the-walls-768x512.jpg
+  - type: cta-banner-with-bg
+    title: Get Your Space Ready for a Fresh Start!
+    description: From bold colors to unique finishes, we can help you achieve the
+      look you want. Contact us for your project.
+    button:
+      label: (123) 456 7890
+      link: tel:234567890
+    icon: /choosing-wall-paints-17-1.jpg
 ---
