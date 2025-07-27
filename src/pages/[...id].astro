@@ -12,6 +12,7 @@ import Services from "@components/section/Services.astro";
 import TestimonialSlider from "@components/section/Testimonials/TestimonialSlider.astro";
 import TestimonialTwoCol from "@components/section/Testimonials/TestimonialTwoCol.astro";
 import TwoCol from "@components/section/TwoCol.astro";
+import ServicesAreas from "@components/section/ServicesAreas.astro";
 import Layout from "@layouts/Layout.astro";
 import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
@@ -62,6 +63,8 @@ const sections = pageData?.data?.sections || [];
             return <TwoCol {...data} />;
           case "image-gallery":
             return <Gallery {...data} />;
+          case "services-areas":
+            return <ServicesAreas {...data} />;
           default:
             return null;
         }

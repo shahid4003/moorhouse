@@ -21,7 +21,7 @@ navLinks:
       - label: Portfolio
         href: /template-kit/portfolio/
   - label: Service Areas
-    href: /template-kit/service-areas/
+    href: /service-areas
   - label: About
     href: "#"
     sublinks:
