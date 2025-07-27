@@ -25,7 +25,6 @@ sections:
       - item: Competitive and affordable pricing for all services.
       - item: Commitment to exceptional customer satisfaction.
   - type: services
-    heading: Services
     backgroundImage: /painted-artistic-background-1.jpg
     threeColumns: true
     services_list:
