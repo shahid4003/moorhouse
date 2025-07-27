@@ -1,7 +1,8 @@
 ---
-logo: /assets/images/logo.svg
+logo: /Group 2532.svg
 description: >
-  Your trusted painting company for residential and commercial projects. Quality, reliability, and satisfaction guaranteed.
+  Your trusted painting company for residential and commercial projects.
+  Quality, reliability, and satisfaction guaranteed.
 sections:
   - title: Company
     links:
@@ -35,16 +36,6 @@ sections:
         href: /pricing/
 contact:
   email: info@example.com
-  phone: "+1 (123) 456-7890"
+  phone: +1 (123) 456-7890
   address: 123 Main Street, City, Country
-socials:
-  - icon: /icons/facebook.svg
-    url: https://facebook.com/yourpage
-    label: Facebook
-  - icon: /icons/instagram.svg
-    url: https://instagram.com/yourpage
-    label: Instagram
-  - icon: /icons/twitter.svg
-    url: https://twitter.com/yourpage
-    label: Twitter
 ---
