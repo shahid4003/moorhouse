@@ -42,4 +42,18 @@ sections:
         title: Customized Solutions
         text: We understand that every homeowner is different. We offer painting
           services that fit your style and budget.
+  - type: rich-text
+    heading: Why Choose Our Residential Painting Service?
+    content: Whether you want to change the look of just one room or your whole
+      house, our team will work with you every step of the way to make sure
+      you're happy. Our residential painting services are designed to help you
+      create the perfect look for your space, whether you're looking to refresh
+      a single room or transform your entire home.
+    showList: true
+    list:
+      - item: We use high-quality materials and take pride in our work.
+      - item: We guarantee your residential painting project's satisfaction.
+      - item: Our experienced residential painters can handle any size project.
+      - item: We offer affordable pricing that fits within your budget.
+      - item: We customize painting to your style and budget.
 ---
