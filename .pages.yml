@@ -169,6 +169,10 @@ content:
     fields:
         - { name: title, label: Title, type: string }
         - { name: slug, label: Slug, type: string }
+        - { name: seoTitle, label: SEO Title, type: string }
+        - { name: seoDescription, label: SEO Description, type: string }
+        - { name: published, label: Published, type: boolean, default: false }
+        - { name: showAside, label: Show Quote and Services List on the Side, type: boolean, default: false }
         - { name: featuredImage, label: Featured Image, type: image }
         - { name: shortDescription, label: Short Description, type: string }
         - name: sections

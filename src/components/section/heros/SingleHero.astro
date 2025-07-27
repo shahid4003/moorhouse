@@ -1,4 +1,6 @@
 ---
+import Divider from "@components/ui/Divider.astro";
+
 const { bgImage, title, description } = Astro.props;
 ---
 
@@ -10,6 +12,7 @@ const { bgImage, title, description } = Astro.props;
 >
   <div class="relative z-10 text-center">
     <h1 class="mb-2 text-4xl font-bold">{title}</h1>
+    <Divider />
     <p class="max-w-xl">{description}</p>
   </div>
 </section>

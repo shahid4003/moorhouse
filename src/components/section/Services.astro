@@ -24,9 +24,9 @@ const gridCols = threeColumns
 ---
 
 <section
-  class={`relative bg-gradient-services w-full py-16${backgroundImage ? "" : " mx-auto max-w-7xl px-4"}`}
+  class={`relative w-full py-16${backgroundImage ? " bg-gradient-services" : " mx-auto max-w-7xl px-4"}`}
   style={backgroundImage
-    ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; `
+    ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; background-attachment: fixed;`
     : ""}
 >
   <div
