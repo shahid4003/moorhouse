@@ -46,4 +46,16 @@ sections:
         phone: 444 444 444
         email: " info@example.com"
         mapSrc: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3522.4863787013455!2d-82.45505782318637!3d28.009606476010536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c6981a410bb1%3A0xbb5677684a7c4ce5!2s789%20E%20Elm%20St%2C%20Tampa%2C%20FL%2033604%2C%20USA!5e0!3m2!1sen!2s!4v1753651251409!5m2!1sen!2s
+  - type: testimonial-twocol
+    heading: Customer Testimonials
+    description: From small repairs to large commercial projects, our skills and
+      customer service exceed expectations. Discover why our customers love us!
+    image: /painting-the-walls-768x512.jpg
+  - type: cta-banner-with-bg
+    title: Get Your Space Ready for a Fresh Start!
+    description: From bold colors to unique finishes, we can help you achieve the
+      look you want. Contact us for your project.
+    button:
+      label: 222 222 222
+    icon: /choosing-wall-paints-1.jpg
 ---
