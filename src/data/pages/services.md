@@ -48,8 +48,25 @@ sections:
         title: Cleanup
   - type: two-col
     heading: Satisfaction Guarantee
-    description: We are always focused on making sure our customers are happy. We
-      won't stop working until you're happy with what we've done.
+    description: >-
+      **We are always focused on making sure our customers are happy. We won't
+      stop working until you're happy with what we've done.**
+
+
+      We believe that customer satisfaction is the foundation of our business.
+      We strive to provide the highest quality painting services possible, and
+      we stand behind every job we complete with our satisfaction guarantee.
+
+
+      We understand that entrusting your space to someone else can be a big
+      decision. That’s why we want to ensure that you are completely satisfied
+      with the end result of our work. Our goal is to ensure that you are happy
+      with the end result of your painting project, and we will not rest until
+      you are completely satisfied.
+
+
+      ##### Contact us today to schedule your painting project and experience
+      the difference with us and our satisfaction guarantee.
     image: /happy-woman-painting-interior-wall-with-paint-roller-in-new-house-e1678323493469-751x1024.jpg
     imageLeft: true
     bgColor: true
