@@ -342,3 +342,16 @@ content:
           - name: address
             label: Physical Address (optional)
             type: string
+          - name: socials
+            label: Social Links
+            list: true
+            fields:
+              - name: icon
+                label: Icon Image
+                type: image
+              - name: url
+                label: Social URL
+                type: string
+              - name: label
+                label: Social Label
+                type: string
