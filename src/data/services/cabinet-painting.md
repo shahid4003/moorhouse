@@ -99,4 +99,12 @@ sections:
     description: From small repairs to large commercial projects, our skills and
       customer service exceed expectations. Discover why our customers love us!
     image: /painting-the-walls-768x512.jpg
+  - type: cta-banner-with-bg
+    title: Get Your Space Ready for a Fresh Start!
+    description: From bold colors to unique finishes, we can help you achieve the
+      look you want. Contact us for your project.
+    button:
+      label: (123) 456 7890
+      link: tel:1234567890
+    icon: /choosing-wall-paints-1.jpg
 ---
