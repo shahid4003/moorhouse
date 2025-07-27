@@ -9,9 +9,9 @@ import OurWorkProcess from "@components/section/OurWorkProcess.astro";
 import TestimonialTwoCol from "@components/section/Testimonials/TestimonialTwoCol.astro";
 import CtaBanner from "@components/section/CtaBanner.astro";
 import CtaBannerWithBG from "@components/section/CtaBannerWithBG.astro";
+import { getEntry } from "astro:content";
 
-const pages = await getCollection("pages");
-const home = pages.find(p => p.data.slug === "home");
+const home = await getEntry("pages", "home");
 const sections = home?.data.sections ?? [];
 ---
 

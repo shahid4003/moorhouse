@@ -1,5 +1,19 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
 @theme {
   --color-primary: #645ea7;
   --color-secondary: #01c898;
+}
+.bg-gradient::before {
+  content: "";
+  background: linear-gradient(var(--color-primary));
+  display: block;
+  position: absolute;
+  opacity: 0.88;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
 }

@@ -1,17 +1,46 @@
 ---
 const { list, content, heading } = Astro.props;
+const hasList = list && list.length > 0;
+import { marked } from "marked";
 ---
 
-<div class="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-  {heading && <h2 class="mb-4 text-3xl font-bold">{heading}</h2>}
-  <div class="prose" set:html={content} />
-  {
-    list && list.length > 0 && (
-      <ul class="mt-4 list-disc pl-5">
-        {list.map(item => (
-          <li class="mb-2">{item}</li>
-        ))}
-      </ul>
-    )
-  }
+<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+    <div class={`${!hasList ? "md:col-span-2" : ""}`}>
+      {
+        heading && (
+          <h2 class="text-primary mb-4 text-3xl font-bold">{heading}</h2>
+        )
+      }
+      <div class="prose" set:html={marked.parse(content)} />
+    </div>
+    {
+      hasList && (
+        <ul class="ml-4 mt-4  pl-5">
+          {list.map(item => (
+            <li class="mb-4 flex list-none items-center gap-2">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                class="text-primary h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g stroke-linecap="round" stroke-linejoin="round" />
+                <g>
+                  <path
+                    d="M9 3.51221C5.50442 4.74772 3 8.08143 3 12.0001C3 16.9707 7.02944 21.0001 12 21.0001C16.9706 21.0001 21 16.9707 21 12.0001C21 8.08143 18.4956 4.74772 15 3.51221"
+                    stroke="#645ea7"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />{" "}
+                </g>
+              </svg>
+              {item.item}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
 </div>

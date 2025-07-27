@@ -101,6 +101,13 @@ content:
             fields:
               - { name: heading, label: Heading, type: string }
               - { name: description, label: Description, type: string }
+              - name: backgroundImage
+                label: Background Image
+                type: image
+              - name: threeColumns
+                label: Three Columns Layout
+                type: boolean
+                default: false
               - name: services_list
                 label: Service Items
                 list: true
@@ -251,6 +258,13 @@ content:
               fields:
                 - { name: heading, label: Heading, type: string }
                 - { name: description, label: Description, type: string }
+                - name: backgroundImage
+                  label: Background Image
+                  type: image
+                - name: threeColumns
+                  label: Three Columns Layout
+                  type: boolean
+                  default: false
                 - name: services_list
                   label: Service Items
                   list: true

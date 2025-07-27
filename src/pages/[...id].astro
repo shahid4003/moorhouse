@@ -1,0 +1,62 @@
+---
+import AboutUs from "@components/section/AboutUs.astro";
+import CtaBanner from "@components/section/CtaBanner.astro";
+import CtaBannerWithBG from "@components/section/CtaBannerWithBG.astro";
+import HeroWithQuote from "@components/section/heros/HeroWithQuote.astro";
+import SingleHero from "@components/section/heros/SingleHero.astro";
+import OurWorkProcess from "@components/section/OurWorkProcess.astro";
+import RichTextWithList from "@components/section/RichTextWithList.astro";
+import Services from "@components/section/Services.astro";
+import TestimonialTwoCol from "@components/section/Testimonials/TestimonialTwoCol.astro";
+import TwoCol from "@components/section/TwoCol.astro";
+import Layout from "@layouts/Layout.astro";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const pages = await getCollection("pages");
+  const filteredPages = pages.filter(page => page.data.published !== false);
+  return filteredPages.map(page => {
+    return {
+      params: { id: page.id },
+      props: { entry: page },
+    };
+  });
+};
+const { id } = Astro.params;
+const pageData = await getEntry("pages", id);
+const sections = pageData?.data?.sections || [];
+---
+
+<Layout>
+  <main id="main-content">
+    {
+      sections.map((data: any) => {
+        switch (data.type) {
+          case "hero-with-quote":
+            return <HeroWithQuote {...data} />;
+          case "about-us":
+            return <AboutUs {...data} />;
+          case "services":
+            return <Services {...data} />;
+          case "our-work-process":
+            return <OurWorkProcess {...data} />;
+          case "testimonial-twocol":
+            return <TestimonialTwoCol {...data} />;
+          case "cta-banner":
+            return <CtaBanner {...data} />;
+          case "cta-banner-with-bg":
+            return <CtaBannerWithBG {...data} />;
+          case "single-hero":
+            return <SingleHero {...data} />;
+          case "rich-text":
+            return <RichTextWithList {...data} />;
+          case "two-col":
+            return <TwoCol {...data} />;
+          default:
+            return null;
+        }
+      })
+    }
+  </main>
+</Layout>

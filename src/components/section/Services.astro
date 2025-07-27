@@ -1,12 +1,15 @@
 ---
 import { getEntry } from "astro:content";
-import { getEntryBySlug } from "astro:content";
 
-const { heading, services_list = [] } = Astro.props;
+const {
+  heading,
+  services_list = [],
+  backgroundImage,
+  threeColumns = false,
+} = Astro.props;
 
 const services = await Promise.all(
   services_list.map(async (item: { service: string }) => {
-    // Extract the slug from the file path, e.g. "src/data/services/residential-painting.md" -> "residential-painting"
     const slug = item.service
       .replace(/^.*[\\/]/, "") // remove path
       .replace(/\.md$/, "");
@@ -14,39 +17,56 @@ const services = await Promise.all(
     return entry?.data;
   })
 );
+
+const gridCols = threeColumns
+  ? "md:grid-cols-2 lg:grid-cols-3"
+  : "md:grid-cols-2 lg:grid-cols-4";
 ---
 
-<section class="mx-auto w-full max-w-7xl px-4 py-16">
-  <h2 class="text-3xl font-bold text-gray-800">{heading}</h2>
-  <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-    {
-      services.map(service => {
-        if (!service) return null;
-        const { title, shortDescription, featuredImage, slug } = service;
-        return (
-          <div class="overflow-hidden rounded-lg bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg">
-            <div class="flex flex-col items-center text-center">
-              {featuredImage && (
-                <img
-                  src={featuredImage}
-                  alt={title}
-                  class="mb-3 h-40 w-full object-cover"
-                />
-              )}
-              <div class="w-full p-6">
-                <h3 class="mb-2 text-lg font-bold text-gray-800">{title}</h3>
-                <p class="mb-4 text-sm text-gray-600">{shortDescription}</p>
-                <a
-                  href={`/services/${slug}`}
-                  class="bg-secondary inline-block w-full rounded px-4 py-2 text-sm font-semibold text-white transition"
-                >
-                  Learn More
-                </a>
+<section
+  class="relative mx-auto w-full max-w-7xl px-4 py-16"
+  style={backgroundImage
+    ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`
+    : ""}
+>
+  <div
+    class={backgroundImage
+      ? "absolute inset-0 bg-black/40 pointer-events-none"
+      : ""}
+  >
+  </div>
+  <div class={backgroundImage ? "relative z-10" : ""}>
+    <h2 class="text-3xl font-bold text-gray-800">{heading}</h2>
+    <div class={`mt-8 grid grid-cols-1 gap-6 ${gridCols}`}>
+      {
+        services.map(service => {
+          if (!service) return null;
+          const { title, shortDescription, featuredImage, slug } = service;
+          return (
+            <div class="overflow-hidden rounded-lg bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg">
+              <div class="flex flex-col items-center text-center">
+                {featuredImage && (
+                  <img
+                    src={featuredImage}
+                    alt={title}
+                    class="mb-3 h-40 w-full object-cover"
+                  />
+                )}
+                <div class="w-full p-6">
+                  <h3 class="mb-2 text-lg font-bold text-gray-800">{title}</h3>
+                  <p class="mb-4 text-sm text-gray-600">{shortDescription}</p>
+                  <a
+                    href={`/services/${slug}`}
+                    class="bg-secondary inline-block w-full rounded px-4 py-2 text-sm font-semibold text-white transition"
+                  >
+                    Learn More
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })
-    }
+          );
+        })
+      }
+    </div>
   </div>
 </section>

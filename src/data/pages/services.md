@@ -1,16 +1,18 @@
 ---
 title: Services
-slug: /services
+slug: services
 published: true
 sections:
   - type: single-hero
     title: Our Services
-    description: Whether you're looking to refresh your space or create a new look,
+    description:
+      Whether you're looking to refresh your space or create a new look,
       our team can help with a range of painting services.
     bgImage: /choosing-wall-paints-17.jpg
   - type: rich-text
     heading: Quality Painting Services for Lasting Beauty and Durability.
-    content: Whether you're looking to refresh your space or create a new look, our
+    content:
+      Whether you're looking to refresh your space or create a new look, our
       team can help with a range of painting services. We promise to give you
       high-quality painting services that are tailored to your specific needs,
       and our work process is set up to make sure we always keep that promise.
@@ -77,7 +79,8 @@ sections:
     image: /painting-the-walls-768x512.jpg
   - type: cta-banner-with-bg
     title: Get Your Space Ready for a Fresh Start!
-    description: From bold colors to unique finishes, we can help you achieve the
+    description:
+      From bold colors to unique finishes, we can help you achieve the
       look you want. Contact us for your project.
     button:
       label: (123) 456 7890
