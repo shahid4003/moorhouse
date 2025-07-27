@@ -4,12 +4,11 @@ navLinks:
   - label: Home
     href: /
   - label: Services
-    href: /template-kit/services/
     sublinks:
       - label: All Services
-        href: /template-kit/services/
+        href: /services
       - label: Single Service
-        href: /template-kit/single-service/
+        href: /single-service
       - label: Pricing
         href: /template-kit/pricing/
       - label: Service Warranty
