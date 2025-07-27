@@ -5,14 +5,12 @@ published: true
 sections:
   - type: single-hero
     title: Our Services
-    description:
-      Whether you're looking to refresh your space or create a new look,
+    description: Whether you're looking to refresh your space or create a new look,
       our team can help with a range of painting services.
     bgImage: /choosing-wall-paints-17.jpg
   - type: rich-text
     heading: Quality Painting Services for Lasting Beauty and Durability.
-    content:
-      Whether you're looking to refresh your space or create a new look, our
+    content: Whether you're looking to refresh your space or create a new look, our
       team can help with a range of painting services. We promise to give you
       high-quality painting services that are tailored to your specific needs,
       and our work process is set up to make sure we always keep that promise.
@@ -28,6 +26,7 @@ sections:
       - item: Commitment to exceptional customer satisfaction.
   - type: services
     heading: Services
+    threeColumns: false
     services_list:
       - service: src/data/services/residential-painting.md
       - service: src/data/services/commercial-painting.md
@@ -35,19 +34,6 @@ sections:
       - service: src/data/services/interior-painting.md
       - service: src/data/services/cabinet-painting.md
       - service: src/data/services/drywall-texturing.md
-  - type: our-work-process
-    heading: Our Work Process
-    description: Our work process is designed to provide you with a stress-free
-      painting experience, from start to finish.
-    cards:
-      - icon: /swatchbook-svgrepo-com.svg
-        title: Preparation
-      - icon: /spray-can-svgrepo-com.svg
-        title: Painting
-      - icon: /tools-svgrepo-com.svg
-        title: Inspection
-      - icon: /hands-wash-svgrepo-com.svg
-        title: Cleanup
   - type: two-col
     heading: Satisfaction Guarantee
     description: >-
@@ -72,6 +58,19 @@ sections:
     image: /happy-woman-painting-interior-wall-with-paint-roller-in-new-house-e1678323493469-751x1024.jpg
     imageLeft: true
     bgColor: true
+  - type: our-work-process
+    heading: Our Work Process
+    description: Our work process is designed to provide you with a stress-free
+      painting experience, from start to finish.
+    cards:
+      - icon: /swatchbook-svgrepo-com.svg
+        title: Preparation
+      - icon: /spray-can-svgrepo-com.svg
+        title: Painting
+      - icon: /tools-svgrepo-com.svg
+        title: Inspection
+      - icon: /hands-wash-svgrepo-com.svg
+        title: Cleanup
   - type: testimonial-twocol
     heading: Customer Testimonials
     description: From small repairs to large commercial projects, our skills and
@@ -79,8 +78,7 @@ sections:
     image: /painting-the-walls-768x512.jpg
   - type: cta-banner-with-bg
     title: Get Your Space Ready for a Fresh Start!
-    description:
-      From bold colors to unique finishes, we can help you achieve the
+    description: From bold colors to unique finishes, we can help you achieve the
       look you want. Contact us for your project.
     button:
       label: (123) 456 7890
